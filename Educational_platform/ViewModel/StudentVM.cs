@@ -18,7 +18,7 @@ namespace Educational_platform.ViewModel
         public int GradeId { get; set; }
 
 
-        public Grade grade { get; set; }
+       public Grade grade { get; set; }
         public string Address { get; set; }
 
     }

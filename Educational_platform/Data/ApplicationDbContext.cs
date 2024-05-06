@@ -17,7 +17,7 @@ namespace Educational_platform.Data
         public DbSet<Book> books { get; set; }
 
         public DbSet<Contactus> contactus { get; set; }
-        public DbSet<StudentVM> studentVMs { get; set; }
+        public DbSet<StudentVM> studentVMs { get; set; } = default!;
 
 
         public ApplicationDbContext()
