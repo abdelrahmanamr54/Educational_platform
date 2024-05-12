@@ -20,14 +20,14 @@ namespace Educational_platform.Controllers
         }
 
 
-        //[HttpGet]
-        //public IActionResult ReadById(int id)
-        //{
-        //    var lec = bookRepository.Details().First(e => e.Id == id);
-        //    return View(lec);
+        [HttpGet]
+        public IActionResult ReadById(int id)
+        {
+            var lec = bookRepository.Details().First(e => e.Id == id);
+            return View(lec);
 
 
-        //}
+        }
 
         [HttpGet]
         public IActionResult CreateNew()
