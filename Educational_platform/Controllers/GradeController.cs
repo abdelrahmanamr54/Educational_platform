@@ -89,13 +89,13 @@ namespace Educational_platform.Controllers
             var Grades = context.grades.ToList();
             ViewBag.Grades = Grades;
 
-            var newgrade = new Grade()
+            var newGrade = new Grade()
             {
                 Name= grade.Name
             };
 
          
-            gradeRepository.Create(newgrade);
+            gradeRepository.Create(newGrade);
             return RedirectToAction("Index", "Home");
         }
 
