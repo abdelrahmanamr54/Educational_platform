@@ -51,5 +51,6 @@ namespace Educational_platform.Data
         }
         public DbSet<Educational_platform.ViewModel.LectureVM> LectureVM { get; set; } = default!;
         public DbSet<Educational_platform.ViewModel.BookVM> BookVM { get; set; } = default!;
+        public DbSet<Educational_platform.ViewModel.ExamVM> ExamVM { get; set; } = default!;
     }
 }

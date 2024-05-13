@@ -29,7 +29,6 @@ namespace Educational_platform.Controllers
             return View(lec);
         }
         [HttpPost]
-        
         public IActionResult SaveNew(LectureVM lectureVM)
         {
             if (ModelState.IsValid)
