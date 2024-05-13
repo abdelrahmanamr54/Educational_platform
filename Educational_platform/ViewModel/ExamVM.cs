@@ -1,7 +1,6 @@
 ﻿namespace Educational_platform.ViewModel
 {
-    public class GradeVM
+    public class ExamVM
     {
-        
     }
 }
