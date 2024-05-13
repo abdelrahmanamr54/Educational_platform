@@ -71,7 +71,7 @@ namespace Educational_platform.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await userManager.FindByNameAsync(userVM.UserName);
+                var result = await userManager.FindByEmailAsync(userVM.Email);
                 if (result != null)
                 {
                     bool check = await userManager.CheckPasswordAsync(result, userVM.Password);
