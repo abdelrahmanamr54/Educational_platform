@@ -22,6 +22,7 @@ namespace Educational_platform
                  .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddScoped<ILectureRepository, LectureRepository>();
             builder.Services.AddScoped<IBookRepository, BookRepository>();
+            builder.Services.AddScoped<IGradeRepository, GradeRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

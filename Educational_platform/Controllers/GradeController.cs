@@ -1,4 +1,5 @@
-﻿using Educational_platform.IRepositery;
+﻿using Educational_platform.Data;
+using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +9,11 @@ namespace Educational_platform.Controllers
     public class GradeController : Controller
     {
         private readonly IGradeRepository gradeRepository;
-        public GradeController(IGradeRepository gradeRepository)
+        private readonly ApplicationDbContext context;
+        public GradeController(IGradeRepository gradeRepository,  ApplicationDbContext context)
         {
             this.gradeRepository = gradeRepository;
+            this.context = context;
 
         }
         public IActionResult Index()
@@ -71,9 +74,11 @@ namespace Educational_platform.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult addGrade(int id)
+        public IActionResult addGrade()
         {
-           
+            var Grades = context.grades.ToList();
+            ViewBag.Grades = Grades;
+
             return View();
         }
 
@@ -81,6 +86,8 @@ namespace Educational_platform.Controllers
 
         public IActionResult add_Grade(GradeVM grade)
         {
+            var Grades = context.grades.ToList();
+            ViewBag.Grades = Grades;
 
             var newgrade = new Grade()
             {

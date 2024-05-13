@@ -1,4 +1,5 @@
-﻿using Educational_platform.Models;
+﻿using Educational_platform.Data;
+using Educational_platform.Models;
 using Educational_platform.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,12 +8,14 @@ namespace Educational_platform.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly ApplicationDbContext context;
         UserManager<Student> userManager;
         SignInManager<Student> signIn;
-        public AccountController(UserManager<Student> userManager, SignInManager<Student> signIn)
+        public AccountController(UserManager<Student> userManager, SignInManager<Student> signIn, ApplicationDbContext context)
         {
             this.userManager = userManager;
             this.signIn = signIn;
+            this.context = context;
         }
 
 
@@ -21,12 +24,16 @@ namespace Educational_platform.Controllers
         [HttpGet]
         public IActionResult Registration()
         {
+            var Grades = context.grades.ToList();
+            ViewBag.Grades = Grades;
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registration(StudentVM userVM)
         {
+            var Grades = context.grades.ToList();
+            ViewBag.Grades = Grades;
             if (ModelState.IsValid)
             {
                 Student user = new Student()
@@ -34,7 +41,9 @@ namespace Educational_platform.Controllers
                     UserName = userVM.Name,
                     Email = userVM.Email
                     ,
-                    PasswordHash = userVM.Password
+                    PasswordHash = userVM.Password,
+                    GradeId=userVM.GradeId,
+                    Address=userVM.Address
                 };
 
                 // var result = await userManager.CreateAsync(user, userVM.Password);
@@ -47,7 +56,7 @@ namespace Educational_platform.Controllers
                 }
                 return View();
             }
-
+         
             return View();
         }
 
