@@ -23,8 +23,8 @@ namespace Educational_platform.Controllers
         [HttpGet]
         public IActionResult ReadById(int id)
         {
-            var lec = bookRepository.Details().First(e => e.Id == id);
-            return View(lec);
+            var book = bookRepository.Details().First(e => e.Id == id);
+            return View(book);
 
 
         }
