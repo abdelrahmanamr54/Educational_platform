@@ -1,5 +1,7 @@
 using Educational_platform.Data;
+using Educational_platform.IRepositery;
 using Educational_platform.Models;
+using Educational_platform.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +20,8 @@ namespace Educational_platform
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddIdentity<Student, IdentityRole>()
                  .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddScoped<ILectureRepository, LectureRepository>();
+            builder.Services.AddScoped<IBookRepository, BookRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
