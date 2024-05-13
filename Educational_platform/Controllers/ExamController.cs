@@ -22,18 +22,28 @@ namespace Educational_platform.Controllers
         [HttpGet]
         public IActionResult ReadById(int id)
         {
-            var exam = examRepository.Details().First(e => e.Id == id);
+            //var exam = examRepository.Details().First(e => e.Id == id);
+            //return View(exam);
+            var exam = examRepository.GetExamWithAns().First(e => e.Id == id);
             return View(exam);
 
 
         }
+        [HttpGet]
+        public IActionResult GetExamWithAns(int id)
+        {
+            var exam = examRepository.GetExamWithAns().First(e => e.Id == id);
+            return View(exam);
+
+
+        }
+
 
         [HttpGet]
         public IActionResult CreateNew()
         {
 
             var exam = new ExamVM();
-
             return View(exam);
         }
         [HttpPost]
@@ -45,6 +55,7 @@ namespace Educational_platform.Controllers
                 Exam exam = new Exam();
                 exam.Name = examVM.Name;
                 exam.Description = examVM.Description;
+                exam.QuestionImg = examVM.QuestionImg;
                 exam.LectureId = examVM.LectureId;
 
                 examRepository.Create(exam);
@@ -70,7 +81,9 @@ namespace Educational_platform.Controllers
                 Id = exam.Id,
                 Name = exam.Name,
                 Description = exam.Description,
+                QuestionImg = exam.QuestionImg,
                 LectureId = exam.LectureId,
+
             };
 
             return View(examVM);

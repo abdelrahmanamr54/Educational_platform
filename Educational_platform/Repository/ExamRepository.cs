@@ -54,10 +54,15 @@ namespace Educational_platform.Repository
                 e.Id = exam.Id;
                 e.Name = exam.Name;
                 e.Description = exam.Description;
+                e.QuestionImg = exam.QuestionImg;
                 e.LectureId = exam.LectureId;
 
                 context.SaveChanges();
             }
+        }
+
+        public List<Exam> GetExamWithAns() {
+            return context.exams.Include(e=>e.Questions).Include(e => e.Lecture).ToList();
         }
     }
 }

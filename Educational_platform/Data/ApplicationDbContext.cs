@@ -41,6 +41,8 @@ namespace Educational_platform.Data
     .HasForeignKey(p => p.GradeId).OnDelete(DeleteBehavior.Restrict)
    ; // or DeleteBehavior.NoAction
 
+          
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -54,5 +56,6 @@ namespace Educational_platform.Data
         public DbSet<Educational_platform.ViewModel.BookVM> BookVM { get; set; } = default!;
         public DbSet<Educational_platform.ViewModel.GradeVM> GradeVM { get; set; } = default!;
         public DbSet<Educational_platform.ViewModel.UserLoginVM> UserLoginVM { get; set; } = default!;
+        public DbSet<Educational_platform.ViewModel.QuestionVM> QuestionVM { get; set; } = default!;
     }
 }
