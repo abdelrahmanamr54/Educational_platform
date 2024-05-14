@@ -69,13 +69,13 @@ namespace Educational_platform.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            int usergradeId = user.GradeId;
+            int userlogedgradeId = user.GradeId;
 
 
 
 
 
-            var books = gradeRepository.GetBookById(usergradeId);
+            var books = gradeRepository.GetBookById(userlogedgradeId);
             return View(books);
         }
         public IActionResult getStudentbyGrade(int id)
