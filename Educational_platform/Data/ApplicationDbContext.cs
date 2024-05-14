@@ -41,6 +41,8 @@ namespace Educational_platform.Data
     .HasForeignKey(p => p.GradeId).OnDelete(DeleteBehavior.Restrict)
    ; // or DeleteBehavior.NoAction
 
+          
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -10,5 +10,6 @@ namespace Educational_platform.IRepositery
         Exam ReadById(int id);
         List<Exam> Details();
         void Create(Exam exam);
+        List<Exam> GetExamWithAns();
     }
 }

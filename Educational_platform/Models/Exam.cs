@@ -6,8 +6,8 @@
         public string Name { get; set; }
         public string Description { get; set; }
         
-
-        public List<Question> questions { get; set; }
+        public List<Question> Questions { get; set; }
+        public string QuestionImg { get; set; }
         public int LectureId { get; set; }
 
 

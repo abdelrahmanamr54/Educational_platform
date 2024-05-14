@@ -23,6 +23,8 @@ namespace Educational_platform
             builder.Services.AddScoped<ILectureRepository, LectureRepository>();
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<IGradeRepository, GradeRepository>();
+            builder.Services.AddScoped<IExamRepository, ExamRepository>();
+            builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
