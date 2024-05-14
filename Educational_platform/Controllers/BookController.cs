@@ -1,4 +1,5 @@
-﻿using Educational_platform.IRepositery;
+﻿using Educational_platform.Data;
+using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.Repository;
 using Educational_platform.ViewModel;
@@ -9,9 +10,11 @@ namespace Educational_platform.Controllers
     public class BookController : Controller
     {
         private readonly IBookRepository bookRepository;
-        public BookController(IBookRepository bookRepository)
+        private readonly ApplicationDbContext applicationDbContext;
+       public BookController(IBookRepository bookRepository, ApplicationDbContext applicationDbContext)
         {
             this.bookRepository = bookRepository;
+            this.applicationDbContext = applicationDbContext;
         }
         public IActionResult Index()
         {
@@ -34,6 +37,8 @@ namespace Educational_platform.Controllers
         {
 
             var book = new BookVM();
+            var Grades = applicationDbContext.grades.ToList();
+            ViewBag.Grades = Grades;
 
             return View(book);
         }
@@ -41,12 +46,16 @@ namespace Educational_platform.Controllers
 
         public IActionResult SaveNew(BookVM bookVM)
         {
+            var Grades = applicationDbContext.grades.ToList();
+            ViewBag.Grades = Grades;
+
             if (ModelState.IsValid)
             {
                 Book book = new Book();
                 book.Name = bookVM.Name;
                 book.Price = bookVM.Price;
                 book.GradeId = bookVM.GradeId;
+                book.ImageUrl = bookVM.ImageUrl;
 
                 bookRepository.Create(book);
 
@@ -72,7 +81,8 @@ namespace Educational_platform.Controllers
                 Name = book.Name,
                 Price = book.Price,
                 GradeId = book.GradeId,
-            };
+                ImageUrl = book.ImageUrl,
+        };
 
             return View(bookVM);
         }

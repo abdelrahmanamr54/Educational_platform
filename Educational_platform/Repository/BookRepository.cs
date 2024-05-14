@@ -58,6 +58,7 @@ namespace Educational_platform.Repository
                 b.Name = book.Name;
                 b.Price = book.Price;
                 b.GradeId = book.GradeId;
+                b.ImageUrl = book.ImageUrl;
                 context.SaveChanges();
             }
         }

@@ -1,4 +1,5 @@
-﻿using Educational_platform.IRepositery;
+﻿using Educational_platform.Data;
+using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,11 @@ namespace Educational_platform.Controllers
     public class LectureController : Controller
     {
         private readonly ILectureRepository lectureRepository;
-
-        public LectureController(ILectureRepository lectureRepository)
+        private readonly ApplicationDbContext context;
+        public LectureController(ILectureRepository lectureRepository, ApplicationDbContext context)
         {
             this.lectureRepository = lectureRepository;
+            this.context = context;
         }
         public IActionResult Index()
         {
@@ -24,6 +26,10 @@ namespace Educational_platform.Controllers
         public IActionResult CreateNew()
         {
 
+            var Grades = context.grades.ToList();
+            ViewBag.Grades = Grades;
+
+
             var lec = new LectureVM();
 
             return View(lec);
@@ -31,6 +37,9 @@ namespace Educational_platform.Controllers
         [HttpPost]
         public IActionResult SaveNew(LectureVM lectureVM)
         {
+
+            var Grades = context.grades.ToList();
+            ViewBag.Grades = Grades;
             if (ModelState.IsValid)
             {
                 Lecture lec = new Lecture();

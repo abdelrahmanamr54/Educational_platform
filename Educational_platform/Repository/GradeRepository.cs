@@ -2,6 +2,7 @@
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using System.Numerics;
 
 namespace Educational_platform.Repository
@@ -35,22 +36,27 @@ namespace Educational_platform.Repository
         }
         public List<Lecture> GetLecturerById(int LId)
         {
+
+
             var Lecture = context.lectures.Where(e => e.GradeId == LId).ToList();
 
             return Lecture;
         }
         public List<Book> GetBookById(int BId)
         {
-            var Book = context.books.Where(e => e.GradeId == BId).ToList();
+
+
+
+            var Book = context.books.Include(e => e.grade).Where(e => e.GradeId == BId).ToList();
 
             return Book;
         }
-        public List<StudentVM> GetstudentById(int sId)
-        {
-            var students = context.studentVMs.Where(e => e.GradeId == sId).ToList();
+        //public List<StudentVM> GetstudentById(int sId)
+        //{
+        //   // var students = context.studentVMs.Where(e => e.GradeId == sId).ToList();
 
-            return students;
-        }
+        //   // return students;
+        //}
 
 
         public List<Grade> ReadAll()

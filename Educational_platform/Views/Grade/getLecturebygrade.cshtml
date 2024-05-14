@@ -5,23 +5,24 @@
 }
 
 <h1>Index</h1>
+<h1>@ViewBag.Grades</h1>
 
 
-    <a href="/Lecture/CreateNew">Create New</a>
+<a href="/Lecture/CreateNew">Create New</a>
 
 <table class="table">
-   @* <thead>
-        <tr>
-            
-            
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Content</th>
-            <th scope="col">VideoUrl</th>
-            <th scope="col">ImageUrl</th>
-            <th scope="col">grade</th>
-            <th scope="col">Actions</th>
-        </tr>
+    @* <thead>
+    <tr>
+
+
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Content</th>
+    <th scope="col">VideoUrl</th>
+    <th scope="col">ImageUrl</th>
+    <th scope="col">grade</th>
+    <th scope="col">Actions</th>
+    </tr>
     </thead>*@
     <tbody>
         @for (int i = 0; i < Model.Count; i++)
@@ -35,31 +36,31 @@
                 </div>
             </div>
             var lec = Model[i];
-      <tr>
+            <tr>
                 @*    <td>
-                @Model[i].Name
+            @Model[i].Name
             </td>
             <td>
-                    @Model[i].Description
+            @Model[i].Description
             </td>
             <td>
-                    @Model[i].Content
+            @Model[i].Content
             </td>
             <td>
-                    @Model[i].VideoUrl
+            @Model[i].VideoUrl
             </td>
             <td>
-                    @Model[i].ImageUrl
+            @Model[i].ImageUrl
             </td>
             <td>
-                    @lec?.grade?.Name
+            @lec?.grade?.Name
             </td>*@
-            <td>
+                <td>
                     <a asp-action="Edit" asp-route-id="@Model[i].Id">Edit</a> |
                     <a href="/Lecture/ReadById/@Model[i].Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@Model[i].Id">Delete</a>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

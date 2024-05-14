@@ -2,7 +2,12 @@
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.Security.Cryptography;
 
 namespace Educational_platform.Controllers
 {
@@ -10,10 +15,12 @@ namespace Educational_platform.Controllers
     {
         private readonly IGradeRepository gradeRepository;
         private readonly ApplicationDbContext context;
-        public GradeController(IGradeRepository gradeRepository,  ApplicationDbContext context)
+        private readonly UserManager<Student> userManager;
+        public GradeController(IGradeRepository gradeRepository,  ApplicationDbContext context, UserManager<Student> userManager)
         {
             this.gradeRepository = gradeRepository;
             this.context = context;
+            this.userManager = userManager;
 
         }
         public IActionResult Index()
@@ -27,25 +34,55 @@ namespace Educational_platform.Controllers
             var grade = gradeRepository.ReadAll();
             return View(grade);
         }
-
-        public IActionResult getLecturebygrade( int id )
+        [Authorize]
+        public async Task<IActionResult> getLecturebygrade(  )
         {
+            
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
 
-            var lecturs = gradeRepository.GetLecturerById(id);
-            return View(lecturs);
+                return RedirectToAction("Login", "Account");
+            }
+
+         int usergradeId = user.GradeId; 
+
+            ViewBag.Grades = usergradeId;
+
+
+
+            var lectures = gradeRepository.GetLecturerById(usergradeId);
+                //await context.lectures
+                //.Where(l => l.GradeId == usergradeId)
+                //.ToListAsync();
+           
+            return View(lectures);
         }
 
-        public IActionResult getBookbyGrade(int id)
+        public async Task<IActionResult> getBookbyGrade(int id)
         {
 
-            var books = gradeRepository.GetBookById(id);
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+
+                return RedirectToAction("Login", "Account");
+            }
+
+            int usergradeId = user.GradeId;
+
+
+
+
+
+            var books = gradeRepository.GetBookById(usergradeId);
             return View(books);
         }
         public IActionResult getStudentbyGrade(int id)
         {
 
-            var students = gradeRepository.GetstudentById(id);
-            return View(students);
+            //var students = gradeRepository.GetstudentById(id);
+            return View();
         }
 
         [HttpGet]

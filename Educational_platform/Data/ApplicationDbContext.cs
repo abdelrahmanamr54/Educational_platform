@@ -17,7 +17,7 @@ namespace Educational_platform.Data
         public DbSet<Book> books { get; set; }
 
         public DbSet<Contactus> contactus { get; set; }
-        public DbSet<StudentVM> studentVMs { get; set; } = default!;
+       // public DbSet<StudentVM> studentVMs { get; set; } = default!;
 
 
         public ApplicationDbContext()
@@ -50,9 +50,9 @@ namespace Educational_platform.Data
                 );
         }
 
-        public DbSet<Educational_platform.ViewModel.LectureVM> LectureVM { get; set; } = default!;
-        public DbSet<Educational_platform.ViewModel.BookVM> BookVM { get; set; } = default!;
-        public DbSet<Educational_platform.ViewModel.GradeVM> GradeVM { get; set; } = default!;
-        public DbSet<Educational_platform.ViewModel.UserLoginVM> UserLoginVM { get; set; } = default!;
+      //  public DbSet<Educational_platform.ViewModel.LectureVM> LectureVM { get; set; } = default!;
+     //   public DbSet<Educational_platform.ViewModel.BookVM> BookVM { get; set; } = default!;
+      //  public DbSet<Educational_platform.ViewModel.GradeVM> GradeVM { get; set; } = default!;
+      //  public DbSet<Educational_platform.ViewModel.UserLoginVM> UserLoginVM { get; set; } = default!;
     }
 }
