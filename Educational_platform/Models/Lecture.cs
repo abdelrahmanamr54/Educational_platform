@@ -9,8 +9,6 @@
         public string VideoUrl { get; set; }
         public string ImageUrl { get; set; }
         public int GradeId { get; set; }
-
-
         public Grade grade { get; set; }
       
 

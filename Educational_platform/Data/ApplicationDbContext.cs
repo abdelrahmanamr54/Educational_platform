@@ -15,6 +15,7 @@ namespace Educational_platform.Data
         public DbSet<Grade> grades { get; set; }
 
         public DbSet<Book> books { get; set; }
+        public DbSet<CartItem> cartItems { get; set; }
 
         public DbSet<Contactus> contactus { get; set; }
        // public DbSet<StudentVM> studentVMs { get; set; } = default!;
