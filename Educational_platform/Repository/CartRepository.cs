@@ -15,7 +15,6 @@ namespace Educational_platform.Repository
             this.context = context; 
         }
 
-
         public void AddToCart(int lecId, string studentId)
         {
             var findItem =   context.lectures.Find(lecId);

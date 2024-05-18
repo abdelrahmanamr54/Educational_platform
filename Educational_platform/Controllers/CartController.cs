@@ -1,5 +1,4 @@
-
-﻿using Educational_platform.Data;
+using Educational_platform.Data;
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
@@ -15,14 +14,10 @@ namespace Educational_platform.Controllers
     public class CartController : Controller
     {
         private readonly ICartRepository cartRepository;
+        private readonly UserManager<Student> userManager; private readonly ApplicationDbContext context;
 
-
-        private readonly UserManager<Student> userManager;
-        private readonly ApplicationDbContext context;
-
-
+    
         public CartController(ICartRepository cartRepository, UserManager<Student> userManager, ApplicationDbContext context)
-
         {
             this.cartRepository = cartRepository;
             this.userManager = userManager;
@@ -32,18 +27,15 @@ namespace Educational_platform.Controllers
         {
             return View();
         }
-
-
         [HttpGet]
-
-        public IActionResult AddToCart(int lecId)
+     
+        public  IActionResult AddToCart(int lecId)
         {
+       
+        
 
-
-
-
-
-            var findItem = context.lectures.Find(lecId);
+        
+            var findItem =  context.lectures.Find(lecId);
 
             //if (findItem == null)
             //{
@@ -68,7 +60,7 @@ namespace Educational_platform.Controllers
             }
             string userlogedgradeId = user.Id;
 
-            var lec = await context.lectures.FindAsync(id);
+            var lec = await context.lectures.FindAsync(id );
 
             if (lec == null)
             {
@@ -76,9 +68,9 @@ namespace Educational_platform.Controllers
             }
 
 
-            context.cartItems.AddAsync(new CartItem { LectureId = lec.Id, StudentId = userlogedgradeId, Lecture = lec });
+            context.cartItems.AddAsync(new CartItem { LectureId = lec.Id, StudentId = userlogedgradeId ,Lecture=lec});
             context.SaveChanges();
-            return RedirectToAction("Index", "home");
+            return RedirectToAction("Index","home");
             // return View(cart);
 
         }
