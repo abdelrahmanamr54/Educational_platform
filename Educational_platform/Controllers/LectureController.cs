@@ -59,6 +59,53 @@ namespace Educational_platform.Controllers
         }
 
         [HttpGet]
+        public IActionResult AddToCart(int lecId)
+        {
+
+
+
+
+            //    var lec = context.lectures.Find(lecId
+            //    );
+
+
+            //    LectureVM lectureVM = new LectureVM()
+            //    {
+            //        Id = lec.Id,
+            //        Name = lec.Name,
+            //        Description = lec.Description,
+            //        Content = lec.Content,
+            //        ImageUrl = lec.ImageUrl,
+            //        VideoUrl = lec.VideoUrl,
+            //        GradeId = lec.GradeId,
+            //    };
+
+            //    if (findItem == null)
+            //    {
+            //        return NotFound("Lecture not found");
+            //    }
+
+            //    return View(lectureVM);
+            Lecture? lec = lectureRepository.ReadById(lecId);
+            if (lec == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            LectureVM lectureVM = new LectureVM()
+            {
+                Id = lec.Id,
+                Name = lec.Name,
+                Description = lec.Description,
+                Content = lec.Content,
+                ImageUrl = lec.ImageUrl,
+                VideoUrl = lec.VideoUrl,
+                GradeId = lec.GradeId,
+            };
+
+            return View(lectureVM);
+        }
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             Lecture? lec = lectureRepository.ReadById(id);

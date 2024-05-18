@@ -48,12 +48,12 @@
                       @*      <button onclick="addToCart(@Model[i].Id)">Add to Cart</button>*@
                           @*  <form method="post" action="/Cart/AddToCart?id=@Model[i].Id">*@
                           @*  <a href="/Cart/Add?id=@item.Id"> <button type="button" class="btn btn-success">Book Tickets</button></a>*@
-                              <h3> <a href="/Cart/AddToCart?id=@Model[i].Id"> <button type="button" class="btn btn-success">Book lec</button></a></h3>
+                            <a href="/Cart/AddCart?id=@Model[i].Id">  Book Lecture</a>
                                @* </form>*@
-                           
 
-                          
-                                <div class="trainer d-flex justify-content-between align-items-center">
+
+                           <a href="/Lecture/Edit?id=@Model[i].Id"  >Edit!</a>
+                            <div class="trainer d-flex justify-content-between align-items-center">
 
                                     <div class="trainer-profile d-flex align-items-center">
                                         <img src="assets/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">
@@ -129,7 +129,7 @@
 
         </div>
 
-    </section>
+   @* </section>
   <!-- /Courses Section -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
@@ -151,5 +151,10 @@
             });
         }
     </script>
-
+*@
 </main>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

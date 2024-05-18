@@ -13,35 +13,96 @@ namespace Educational_platform.Controllers
     public class CartController : Controller
     {
         private readonly ICartRepository cartRepository;
-        private readonly UserManager<Student> userManager; private readonly ApplicationDbContext context;
+        private readonly UserManager<Student> userManager;
+        private readonly ApplicationDbContext context;
+        private readonly ILectureRepository lectureRepository;
 
-    
-        public CartController(ICartRepository cartRepository, UserManager<Student> userManager, ApplicationDbContext context)
+        public CartController(ICartRepository cartRepository, UserManager<Student> userManager, ApplicationDbContext context, ILectureRepository lectureRepository)
         {
             this.cartRepository = cartRepository;
             this.userManager = userManager;
             this.context = context;
+            this.lectureRepository = lectureRepository;
         }
         public IActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
+
+        public IActionResult AddCart(int id)
+        {
+            Lecture? lec = context.lectures.Find(id);
+            //if (lec == null)
+            //{
+            //    return RedirectToAction("Index");
+            //}
+
+
+            LectureVM lectureVM = new LectureVM()
+            {
+                Id = lec.Id,
+                Name = lec.Name,
+                Description = lec.Description,
+                Content = lec.Content,
+                ImageUrl = lec.ImageUrl,
+                VideoUrl = lec.VideoUrl,
+                GradeId = lec.GradeId,
+            };
+            return View(lectureVM);
+        }
+
+
+
+            [HttpGet]
      
         public  IActionResult AddToCart(int lecId)
         {
-       
-        
 
-        
-            var findItem =  context.lectures.Find(lecId);
 
-            //if (findItem == null)
+
+
+            //    var lec = context.lectures.Find(lecId
+            //    );
+
+
+            //    LectureVM lectureVM = new LectureVM()
+            //    {
+            //        Id = lec.Id,
+            //        Name = lec.Name,
+            //        Description = lec.Description,
+            //        Content = lec.Content,
+            //        ImageUrl = lec.ImageUrl,
+            //        VideoUrl = lec.VideoUrl,
+            //        GradeId = lec.GradeId,
+            //    };
+
+            //    if (findItem == null)
+            //    {
+            //        return NotFound("Lecture not found");
+            //    }
+
+            //    return View(lectureVM);
+            //Lecture? lec = lectureRepository.ReadById(lecId);
+            ////if (lec == null)
+            ////{
+            ////    return RedirectToAction("Index");
+            ////}
+
+
+            //LectureVM lectureVM = new LectureVM()
             //{
-            //    return NotFound("Lecture not found");
-            //}
+            //    Id = lec.Id,
+            //    Name = lec.Name,
+            //    Description = lec.Description,
+            //    Content = lec.Content,
+            //    ImageUrl = lec.ImageUrl,
+            //    VideoUrl = lec.VideoUrl,
+            //    GradeId = lec.GradeId,
+            //};
 
-            return View(findItem);
+            return View();
         }
 
 
