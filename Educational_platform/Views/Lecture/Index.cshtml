@@ -1,4 +1,5 @@
 ﻿@model List<Educational_platform.Models.Lecture>
+
 <main class="main">
 
     <!-- Page Title -->
@@ -34,8 +35,8 @@
         
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="course-item">
-                            <img src="@Model[i].ImageUrl" class="img-fluid" alt="...">
+                        <div class="course-item w-100">
+                            <a href="/Lecture/ReadById/@Model[i].Id"><img src="@Model[i].ImageUrl" class="w-100" alt="..."></a>
                             <div class="course-content">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                        @*             < p class="category">Physics</p>*@
@@ -43,6 +44,12 @@
                                     <p class="price">$190</p>
                                 </div>
 
+<<<<<<< HEAD
+                                <h3><a href="course-details.html">@Model[i].Name</a></h3>
+                                <div width="300" >
+                                <p class="description">@Model[i].Description</p>
+                                </div>
+=======
                            @*     <h3><a href="course-details.html">@Model[i].Name</a></h3>*@
                                 <p class="description">@Model[i].Description</p>
                       @*      <button onclick="addToCart(@Model[i].Id)">Add to Cart</button>*@
@@ -66,10 +73,16 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
+                        </div>
+                    </div>
+                    
+=======
      </div>
       
 
                
+>>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
                     <!-- End Course Item-->
                     @*<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                 <div class="course-item">
