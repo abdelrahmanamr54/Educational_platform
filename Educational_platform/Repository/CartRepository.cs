@@ -2,6 +2,7 @@
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 
 namespace Educational_platform.Repository
 {
@@ -14,14 +15,34 @@ namespace Educational_platform.Repository
             this.context = context; 
         }
 
-        public void AddToCart(int lecId)
-        {
-            var findItem = context.lectures.Find(lecId);
-            if (findItem != null)
-            {
-                context.cartItems.Add(new CartItem { LectureId = lecId});
-                context.SaveChanges();
-            }
-        }
+        //public void AddToCart(int lectureId, string studentId)
+        //{
+            
+        //    var lecture = context.lectures.Find(lectureId);
+        //    if (lecture == null)
+        //    {
+        //        throw new ArgumentException("Lecture with the provided ID does not exist.");
+        //    }
+
+            
+        //    var existingItem = context.cartItems
+        //        .Where(ci => ci.LectureId == lectureId && ci.StudentId == studentId)
+        //        .FirstOrDefault();
+
+           
+        //    if (existingItem == null)
+        //    {
+        //        context.cartItems.Add(new CartItem
+        //        {
+        //            LectureId = lectureId,
+        //            StudentId = studentId,
+        //            Lecture = lecture
+        //        });
+        //    }
+
+           
+        //    context.SaveChanges();
+        //}
     }
 }
+

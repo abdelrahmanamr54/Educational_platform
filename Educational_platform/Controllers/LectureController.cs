@@ -108,7 +108,7 @@ namespace Educational_platform.Controllers
         [HttpGet]
         public IActionResult ReadById(int id)
         {
-            var lec = lectureRepository.Details().First(e => e.Id == id);
+            var lec = lectureRepository.ReadById(id);
             return View(lec);
 
         }

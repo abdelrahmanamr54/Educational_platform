@@ -39,8 +39,7 @@ namespace Educational_platform.Controllers
                 Student user = new Student()
                 {
                     UserName = userVM.Name,
-                    Email = userVM.Email
-                    ,
+                    Email = userVM.Email,
                     PasswordHash = userVM.Password,
                     GradeId=userVM.GradeId,
                     Address=userVM.Address

@@ -4,33 +4,43 @@
  //   ViewData["Title"] = "Registration";
 }
 
-<h1>Registration</h1>
 
 @*<h4>StudentVM</h4>
 <hr />*@
 
 <div class="container">
+    <h1>Registration</h1>
+
     <div class="align-content-center">
-        <div class="col-md-10  "          <form asp-action="Registration">
+        <div class="col-md-10 ">        
+           <form asp-action="Registration">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
+                    <h6>
+                        <label asp-for="Name" class="control-label"></label>
+                    </h6>
                     <div class="col-md-12">
                         <input type="text" class="form-control" name="Name" placeholder="Name" required="">
                     </div>
       @*       //       <input asp-for="Name" class="form-control" />*@
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
+                    <h6>
+                        <label asp-for="Email" class="control-label"></label>
+                    </h6>
                     <div class="col-md-12">
                         <input type="text" class="form-control" name="Email" placeholder="Email" required="">
                     </div>
                @*     <input asp-for="Email" class="form-control" />*@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
+                    <h6>
+                        <label asp-for="Password" class="control-label"></label>
+                    </h6>
 
                     <div class="col-md-12">
                         <input type ="password"  class="form-control" name="Password" placeholder="Password" required="">
@@ -38,8 +48,11 @@
                  @*   <input asp-for="Password" class="form-control" />*@
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="form-group">
-                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <h6>
+                        <label asp-for="ConfirmPassword" class="control-label"></label>
+                    </h6>
 
                     <div class="col-md-12">
                         <input type="password" class="form-control" name="ConfirmPassword" placeholder="ConfirmPassword" required="">
@@ -47,8 +60,11 @@
                     @*   <input asp-for="ConfirmPassword" class="form-control" />*@
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="col-md-12">
-                    <label asp-for="GradeId" class="control-label"></label>
+                    <h6>
+                        <label asp-for="GradeId" class="control-label"></label>
+                    </h6>
 
                     <select class="form-select" asp-for="GradeId">
                         @foreach (var item in ViewBag.Grades)
@@ -60,8 +76,12 @@
                     </select>
                     @*   <select asp-for="GradeId" class="form-control" asp-items="ViewBag.Grades"></select>*@
                 </div>
+                <br />
                 <div class="form-group">
-                    <label asp-for="Address" class="control-label"></label>
+
+                    <h6>
+                        <label asp-for="Address" class="control-label"></label>
+                    </h6>
                     <div class="col-lg-12">
                         <input type="text" class="form-control" name="Address" placeholder="Address" required="">
                     </div>
@@ -69,16 +89,11 @@
                   @*  <input asp-for="Address" class="form-control" />*@
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="form-group">
                   @*  //<input type="submit" value="Create" class="btn btn-primary" />*@
-                    <button style="background-color: #5fcf80; border: 0;
-  padding: 10px 30px 12px 30px;
-  transition: 0.4s;
-margin-top:15px;
-color:#ffffff;  text-align: center;
-  border-radius: 50px;" type="submit">
-                         SignUP
-                    </button>
+                    <button style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px; transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;" type="submit">
+                        SignUP</button>
                      @*   <button type="submit">Create</button>*@
                  @*   <a type="submit"> Create </a>*@
                    
@@ -87,12 +102,14 @@ color:#ffffff;  text-align: center;
             </form>
         </div>
     </div>
+    <br />
+    <div>
+
+        <a asp-action="Index">Back to List</a>
+    </div>
 </div>
 
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
