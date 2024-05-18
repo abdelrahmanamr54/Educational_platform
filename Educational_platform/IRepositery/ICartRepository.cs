@@ -7,5 +7,7 @@ namespace Educational_platform.IRepositery
         void AddToCart(int lecId, string studentId);
 
 
+
+
     }
 }
