@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-﻿using Educational_platform.IRepositery;
-using Educational_platform.Models;
-using Educational_platform.Repository;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-=======
+
 ﻿using Educational_platform.Data;
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
@@ -15,22 +8,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
->>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
+
 
 namespace Educational_platform.Controllers
 {
     public class CartController : Controller
     {
         private readonly ICartRepository cartRepository;
-<<<<<<< HEAD
+
+
         private readonly UserManager<Student> userManager;
         public CartController(ICartRepository cartRepository)
-=======
-        private readonly UserManager<Student> userManager; private readonly ApplicationDbContext context;
+
+        private readonly UserManager<Student> userManager;
+        private readonly ApplicationDbContext context;
 
     
         public CartController(ICartRepository cartRepository, UserManager<Student> userManager, ApplicationDbContext context)
->>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
+
         {
             this.cartRepository = cartRepository;
             this.userManager = userManager;
@@ -40,6 +35,7 @@ namespace Educational_platform.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         //public IActionResult AddToCart(int lecId)
         //{
@@ -85,6 +81,15 @@ namespace Educational_platform.Controllers
        
         
 
+=======
+        [HttpGet]
+     
+        public  IActionResult AddToCart(int lecId)
+        {
+       
+        
+
+>>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
         
             var findItem =  context.lectures.Find(lecId);
 

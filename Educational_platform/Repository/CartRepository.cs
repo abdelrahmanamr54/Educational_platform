@@ -15,36 +15,7 @@ namespace Educational_platform.Repository
             this.context = context; 
         }
 
-<<<<<<< HEAD
-        //public void AddToCart(int lectureId, string studentId)
-        //{
-            
-        //    var lecture = context.lectures.Find(lectureId);
-        //    if (lecture == null)
-        //    {
-        //        throw new ArgumentException("Lecture with the provided ID does not exist.");
-        //    }
 
-            
-        //    var existingItem = context.cartItems
-        //        .Where(ci => ci.LectureId == lectureId && ci.StudentId == studentId)
-        //        .FirstOrDefault();
-
-           
-        //    if (existingItem == null)
-        //    {
-        //        context.cartItems.Add(new CartItem
-        //        {
-        //            LectureId = lectureId,
-        //            StudentId = studentId,
-        //            Lecture = lecture
-        //        });
-        //    }
-
-           
-        //    context.SaveChanges();
-        //}
-=======
         public void AddToCart(int lecId, string studentId)
         {
             var findItem =   context.lectures.Find(lecId);
@@ -57,7 +28,7 @@ namespace Educational_platform.Repository
 
           //  return findItem;
         }
->>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
+
     }
 }
 
