@@ -18,12 +18,9 @@ namespace Educational_platform.Controllers
 
 
         private readonly UserManager<Student> userManager;
-        public CartController(ICartRepository cartRepository)
-
-        private readonly UserManager<Student> userManager;
         private readonly ApplicationDbContext context;
 
-    
+
         public CartController(ICartRepository cartRepository, UserManager<Student> userManager, ApplicationDbContext context)
 
         {
@@ -35,63 +32,18 @@ namespace Educational_platform.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        //public IActionResult AddToCart(int lecId)
-        //{
-            
-        //    string currentStudentId = GetCurrentStudentId();
 
-        //    try
-        //    {
-        //        cartRepository.AddToCart(lecId, currentStudentId);
-        //        return View("Success", new { message = "Lecture added to cart!" });
-        //    }
-        //    catch (ArgumentException ex)
-        //    {
-        //        ModelState.AddModelError("", ex.Message); // Add error message from exception
-        //        return View("Error"); // Replace with your error view
-        //    }
-        //}
 
-        
-        //private string GetCurrentStudentId()
-        //{
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        // Get username from Identity (replace with student ID retrieval if needed)
-        //        string studentId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-        //        return studentId; 
-        //    }
-        //    else
-        //    {
-                
-        //        return null;  
-        //    }
-        //}
-    
-
-}
-=======
         [HttpGet]
-     
-        public  IActionResult AddToCart(int lecId)
-        {
-       
-        
 
-=======
-        [HttpGet]
-     
-        public  IActionResult AddToCart(int lecId)
+        public IActionResult AddToCart(int lecId)
         {
-       
-        
 
->>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
-        
-            var findItem =  context.lectures.Find(lecId);
+
+
+
+
+            var findItem = context.lectures.Find(lecId);
 
             //if (findItem == null)
             //{
@@ -116,7 +68,7 @@ namespace Educational_platform.Controllers
             }
             string userlogedgradeId = user.Id;
 
-            var lec = await context.lectures.FindAsync(id );
+            var lec = await context.lectures.FindAsync(id);
 
             if (lec == null)
             {
@@ -124,16 +76,15 @@ namespace Educational_platform.Controllers
             }
 
 
-            context.cartItems.AddAsync(new CartItem { LectureId = lec.Id, StudentId = userlogedgradeId ,Lecture=lec});
+            context.cartItems.AddAsync(new CartItem { LectureId = lec.Id, StudentId = userlogedgradeId, Lecture = lec });
             context.SaveChanges();
-            return RedirectToAction("Index","home");
+            return RedirectToAction("Index", "home");
             // return View(cart);
 
         }
 
 
     }
->>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
 }
 // var lec= await cartRepository.AddToCart(lecId,userlogedgradeId);
 //if (lec)
