@@ -14,14 +14,17 @@ namespace Educational_platform.Repository
             this.context = context; 
         }
 
-        public void AddToCart(int lecId)
+        public void AddToCart(int lecId, string studentId)
         {
-            var findItem = context.lectures.Find(lecId);
+            var findItem =   context.lectures.Find(lecId);
             if (findItem != null)
+
             {
-                context.cartItems.Add(new CartItem { LectureId = lecId});
+                context.cartItems.AddAsync(new CartItem { LectureId = lecId, StudentId=studentId,Lecture=findItem});
                 context.SaveChanges();
             }
+
+          //  return findItem;
         }
     }
 }

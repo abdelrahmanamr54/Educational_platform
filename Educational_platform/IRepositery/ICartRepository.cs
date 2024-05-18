@@ -4,7 +4,8 @@ namespace Educational_platform.IRepositery
 {
     public interface ICartRepository
     {
-     void AddToCart(int lecId);
-     
+        void AddToCart(int lecId, string studentId);
+
+
     }
 }

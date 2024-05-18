@@ -11,7 +11,8 @@
 
 <div class="container">
     <div class="align-content-center">
-        <div class="col-md-10  "          <form asp-action="Registration">
+        <div class="col-md-10  " >
+            <form asp-action="Registration">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
@@ -75,7 +76,7 @@
   padding: 10px 30px 12px 30px;
   transition: 0.4s;
 margin-top:15px;
-color:#ffffff;  text-align: center;
+color:#ffffff;  
   border-radius: 50px;" type="submit">
                          SignUP
                     </button>
@@ -91,7 +92,7 @@ color:#ffffff;  text-align: center;
 
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a  asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
