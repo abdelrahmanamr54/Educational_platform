@@ -15,6 +15,7 @@ namespace Educational_platform.Repository
             this.context = context; 
         }
 
+<<<<<<< HEAD
         //public void AddToCart(int lectureId, string studentId)
         //{
             
@@ -43,6 +44,20 @@ namespace Educational_platform.Repository
            
         //    context.SaveChanges();
         //}
+=======
+        public void AddToCart(int lecId, string studentId)
+        {
+            var findItem =   context.lectures.Find(lecId);
+            if (findItem != null)
+
+            {
+                context.cartItems.AddAsync(new CartItem { LectureId = lecId, StudentId=studentId,Lecture=findItem});
+                context.SaveChanges();
+            }
+
+          //  return findItem;
+        }
+>>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using Educational_platform.Data;
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Educational_platform.Repository
@@ -8,10 +9,11 @@ namespace Educational_platform.Repository
     public class LectureRepository : ILectureRepository
     {
         private readonly ApplicationDbContext context;
-
-        public LectureRepository(ApplicationDbContext context)
+ 
+        public LectureRepository(ApplicationDbContext context )
         {
             this.context = context;
+ 
         }
 
 

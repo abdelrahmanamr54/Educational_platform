@@ -31,6 +31,7 @@
             <div class="row">
      @for (int i = 0; i < Model.Count; i++)
     {
+@*                    @Html.AntiForgeryToken()*@
         
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
@@ -38,15 +39,30 @@
                             <a href="/Lecture/ReadById/@Model[i].Id"><img src="@Model[i].ImageUrl" class="w-100" alt="..."></a>
                             <div class="course-content">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <p class="category">Physics</p>
+                       @*             < p class="category">Physics</p>*@
+                                    <h3><a ">@Model[i].Name</a></h3>
                                     <p class="price">$190</p>
                                 </div>
 
+<<<<<<< HEAD
                                 <h3><a href="course-details.html">@Model[i].Name</a></h3>
                                 <div width="300" >
                                 <p class="description">@Model[i].Description</p>
                                 </div>
+=======
+                           @*     <h3><a href="course-details.html">@Model[i].Name</a></h3>*@
+                                <p class="description">@Model[i].Description</p>
+                      @*      <button onclick="addToCart(@Model[i].Id)">Add to Cart</button>*@
+                          @*  <form method="post" action="/Cart/AddToCart?id=@Model[i].Id">*@
+                          @*  <a href="/Cart/Add?id=@item.Id"> <button type="button" class="btn btn-success">Book Tickets</button></a>*@
+                              <h3> <a href="/Cart/AddToCart?id=@Model[i].Id"> <button type="button" class="btn btn-success">Book lec</button></a></h3>
+                               @* </form>*@
+                           
+
+                          
+>>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
                                 <div class="trainer d-flex justify-content-between align-items-center">
+
                                     <div class="trainer-profile d-flex align-items-center">
                                         <img src="assets/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">
                                         <a href="" class="trainer-link">Antonio</a>
@@ -58,9 +74,16 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                         </div>
                     </div>
                     
+=======
+     </div>
+      
+
+               
+>>>>>>> 600fdbd881a7429fb7aef6e38f20bd1154227de0
                     <!-- End Course Item-->
                     @*<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                 <div class="course-item">
@@ -122,5 +145,25 @@
 
     </section>
   <!-- /Courses Section -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        function addToCart(lectureId) {
+            $.ajax({
+                url: '@Url.Action("AddToCart", "Cart")',
+                type: 'POST',
+                data: { lectureId: lectureId },
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('An error occurred while adding the lecture to the cart.');
+                }
+            });
+        }
+    </script>
 
 </main>
