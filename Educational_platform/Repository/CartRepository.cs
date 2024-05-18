@@ -2,6 +2,7 @@
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 
 namespace Educational_platform.Repository
 {
@@ -26,5 +27,7 @@ namespace Educational_platform.Repository
 
           //  return findItem;
         }
+
     }
 }
+

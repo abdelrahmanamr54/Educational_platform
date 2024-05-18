@@ -1,4 +1,4 @@
-﻿using Educational_platform.Data;
+using Educational_platform.Data;
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+
 
 namespace Educational_platform.Controllers
 {
