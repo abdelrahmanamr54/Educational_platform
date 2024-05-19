@@ -4,6 +4,7 @@ using Educational_platform.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Educational_platform.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240519010733_LecPrice")]
+    partial class LecPrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,28 +52,6 @@ namespace Educational_platform.Migrations
                     b.HasIndex("GradeId");
 
                     b.ToTable("books");
-                });
-
-            modelBuilder.Entity("Educational_platform.Models.BookCart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("StudentId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("bookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("bookId");
-
-                    b.ToTable("bookCarts");
                 });
 
             modelBuilder.Entity("Educational_platform.Models.CartItem", b =>
@@ -448,17 +429,6 @@ namespace Educational_platform.Migrations
                         .IsRequired();
 
                     b.Navigation("grade");
-                });
-
-            modelBuilder.Entity("Educational_platform.Models.BookCart", b =>
-                {
-                    b.HasOne("Educational_platform.Models.Book", "book")
-                        .WithMany()
-                        .HasForeignKey("bookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("book");
                 });
 
             modelBuilder.Entity("Educational_platform.Models.CartItem", b =>

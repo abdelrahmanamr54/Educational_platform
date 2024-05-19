@@ -62,6 +62,7 @@ namespace Educational_platform.Repository
                 lec.Content = lecture.Content;
                 lec.VideoUrl = lecture.VideoUrl;
                 lec.ImageUrl = lecture.ImageUrl;
+                lec.Price = lecture.Price;
                 lec.GradeId = lecture.GradeId;
                 context.SaveChanges();
             }
