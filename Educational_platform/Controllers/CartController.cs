@@ -54,6 +54,24 @@ namespace Educational_platform.Controllers
             return View(lectureVM);
         }
 
+        [HttpGet]
+
+        public async Task<IActionResult>  MyCourses()
+        {
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                // return Json(new { success = false, message = "Userr nott logged in." });
+                return RedirectToAction("Login", "Account");
+            }
+            string userlogedgradeId = user.Id;
+
+
+            var usercart = context.cartItems.Include(e=>e.Lecture).Where(e => e.StudentId == userlogedgradeId).ToList();
+
+            return View(usercart);
+
+        }
 
 
             [HttpGet]
