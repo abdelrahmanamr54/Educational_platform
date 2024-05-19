@@ -9,5 +9,6 @@ namespace Educational_platform.ViewModel
         public Answer QAnswers { get; set; }
        
         public int ExamId { get; set; }
+
     }
 }
