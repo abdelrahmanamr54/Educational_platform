@@ -260,7 +260,7 @@ namespace Educational_platform.Controllers
             }
 
 
-            context.bookCarts.AddAsync(new BookCart {bookId= book.Id, StudentId = userlogedgradeId, book = book});
+            object value = context.bookCarts.AddAsync(new BookCart {bookId= book.Id, StudentId = userlogedgradeId, book = book});
             context.SaveChanges();
             return RedirectToAction("Index", "home");
             // return View(cart);
