@@ -1,16 +1,20 @@
-﻿using Educational_platform.IRepositery;
+﻿using Educational_platform.Data;
+using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Educational_platform.Controllers
 {
     public class ExamController : Controller
     {
         private readonly IExamRepository examRepository;
-        public ExamController(IExamRepository examRepository)
+        private readonly ApplicationDbContext context;
+        public ExamController(IExamRepository examRepository, ApplicationDbContext context)
         {
             this.examRepository = examRepository;
+            this.context = context;
         }
         public IActionResult Index()
         {
@@ -112,5 +116,72 @@ namespace Educational_platform.Controllers
 
 
         }
+        public IActionResult TakeExam(int id)
+        {
+            var exam = context.exams
+                .Include(e => e.Questions)
+                .FirstOrDefault(e => e.Id == id);
+
+            if (exam == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new ExamViewModel
+            {
+                ExamId = exam.Id,
+                ExamName = exam.Name,
+                Questions = exam.Questions.Select(q => new QuestionViewModel
+                {
+                    Id = q.Id,
+                   // Text = q.Text
+                }).ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult SubmitExam(ExamViewModel model)
+        {
+         //   if (ModelState.IsValid)
+          //  {
+                int score = 0;
+            int totalQuestions = 10;
+                //model.Questions.Count;
+
+                foreach (var question in model.Questions)
+                {
+                    var correctAnswer = context.questions
+                        .Where(q => q.Id == question.Id)
+                        .Select(q => q.QAnswers)
+                        .FirstOrDefault();
+
+                    if (correctAnswer == question.SelectedAnswer)
+                    {
+                        score++;
+                    }
+                }
+
+                var resultViewModel = new ExamResultViewModel
+                {
+                    ExamId = model.ExamId,
+                    ExamName = model.ExamName,
+                    Score = score,
+                    TotalQuestions = totalQuestions
+                };
+
+                return RedirectToAction("ExamResult", resultViewModel);
+          //  }
+         //   return RedirectToAction("ExamResult", resultViewModel);
+            //  return View(model);
+        }
+
+        public IActionResult ExamResult(ExamResultViewModel model)
+        {
+            return View(model);
+        }
+
+
     }
 }

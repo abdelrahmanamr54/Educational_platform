@@ -18,6 +18,9 @@ namespace Educational_platform.Data
         public DbSet<CartItem> cartItems { get; set; }
         public DbSet<BookCart> bookCarts
         { get; set; }
+        public DbSet<EnrollmentCode> enrollmentCodes
+        { get; set; }
+
         public DbSet<Contactus> contactus { get; set; }
        // public DbSet<StudentVM> studentVMs { get; set; } = default!;
 
@@ -53,7 +56,7 @@ namespace Educational_platform.Data
             optionsBuilder.UseSqlServer(builder
                 );
         }
-        public DbSet<Educational_platform.ViewModel.BookVM> BookVM { get; set; } = default!;
+      //  public DbSet<Educational_platform.ViewModel.BookVM> BookVM { get; set; } = default!;
       //  public DbSet<Educational_platform.ViewModel.LectureVM> LectureVM { get; set; } = default!;
 
       //  public DbSet<Educational_platform.ViewModel.LectureVM> LectureVM { get; set; } = default!;
