@@ -1,0 +1,5 @@
+﻿@model Educational_platform.ViewModel.ExamResultViewModel
+
+<h2>@Model.ExamName - Results</h2>
+<p>Your Score: @Model.Score out of @Model.TotalQuestions</p>
+<p>Percentage: @(Model.Score * 100 / Model.TotalQuestions)%</p>

@@ -143,11 +143,78 @@ namespace Educational_platform.Controllers
 
             return View();
         }
+ 
+
+            // GET: Enrollment/Index
+         
+            [HttpPost]
+            public async Task<IActionResult> Enroll(int courseId, string code)
+            {
+                if (string.IsNullOrEmpty(code))
+                {
+                    ViewBag.Message = "Enrollment code cannot be empty!";
+                    return View("Index");
+                }
 
 
+                var enrollmentCode = context.enrollmentCodes
+                    .FirstOrDefault(e => e.Code == code);
+
+                if (enrollmentCode != null)
+                {
+            
+                var user = await userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                 
+                    return RedirectToAction("Login", "Account");
+                }
+                var lec = await context.lectures.FindAsync(courseId);
+                string userlogedgradeId = user.Id;
+
+            
+                var existingEnrollment = context.cartItems
+                        .FirstOrDefault(e => e.LectureId == courseId && e.StudentId==userlogedgradeId);
+
+                    if (existingEnrollment != null)
+                    {
+                        ViewBag.Message = "You are already enrolled in this course!";
+                    }
+                    else
+                    {
+              
+
+                  
+                    var enrollment = new CartItem
+                        {
+                           StudentId = userlogedgradeId,
+                            LectureId = courseId,
+                            Lecture=lec
+                        };
+
+                    context.cartItems.Add(enrollment);
+                        context.SaveChanges();
+
+                        // Mark the enrollment code as used (delete or mark it in some way)
+                     context.enrollmentCodes.Remove(enrollmentCode);
+                        context.SaveChanges();
+
+                        ViewBag.Message = "Enrolled successfully!";
+                    }
+                }
+                else
+                {
+                    ViewBag.Message = "Invalid enrollment code or course ID!";
+                }
+
+                return View("index","Lecture");
+            }
+
+            // GET: Enrollment/AllCourses
+         
 
 
-        [HttpPost]
+    [HttpPost]
 
         public async Task<IActionResult> Add_To_Cart(int id)
         {

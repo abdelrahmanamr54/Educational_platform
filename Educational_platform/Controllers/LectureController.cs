@@ -100,7 +100,7 @@ namespace Educational_platform.Controllers
                 Content = lec.Content,
                 ImageUrl = lec.ImageUrl,
                 VideoUrl = lec.VideoUrl,
-                Price = lec.Price,
+               // Price = lec.Price,
                 GradeId = lec.GradeId,
             };
 
@@ -124,7 +124,7 @@ namespace Educational_platform.Controllers
                 Content = lec.Content,
                 ImageUrl = lec.ImageUrl,
                 VideoUrl = lec.VideoUrl,
-                Price = lec.Price,
+              //  Price = lec.Price,
                 GradeId = lec.GradeId,
             };
 
