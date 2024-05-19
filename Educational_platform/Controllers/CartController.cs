@@ -29,6 +29,26 @@ namespace Educational_platform.Controllers
         {
             return View();
         }
+        [HttpGet]
+
+        public IActionResult AddBookCart(int id)
+        {
+         Book? book = context.books.Find(id);
+          
+
+
+           BookVM bookVM = new BookVM()
+            {
+                Id = book.Id,
+                Name = book.Name,
+               Price= book.Price,
+              
+                ImageUrl = book.ImageUrl,
+           
+              
+            };
+            return View(bookVM);
+        }
 
         [HttpGet]
 
@@ -150,6 +170,32 @@ namespace Educational_platform.Controllers
             context.cartItems.AddAsync(new CartItem { LectureId = lec.Id, StudentId = userlogedgradeId ,Lecture=lec});
             context.SaveChanges();
             return RedirectToAction("Index","home");
+            // return View(cart);
+
+        }
+        [HttpPost]
+
+        public async Task<IActionResult> Add_Book_To_Cart(int id)
+        {
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                // return Json(new { success = false, message = "Userr nott logged in." });
+                return RedirectToAction("Login", "Account");
+            }
+            string userlogedgradeId = user.Id;
+
+            var book = await context.books.FindAsync(id);
+
+            if (book == null)
+            {
+                return NotFound("Book not found");
+            }
+
+
+            context.bookCarts.AddAsync(new BookCart {bookId= book.Id, StudentId = userlogedgradeId, book = book});
+            context.SaveChanges();
+            return RedirectToAction("Index", "home");
             // return View(cart);
 
         }
