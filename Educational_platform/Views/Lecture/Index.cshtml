@@ -1,5 +1,42 @@
 ﻿@model List<Educational_platform.Models.Lecture>
 
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Course Details - Mentor Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Mentor
+    * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+    * Updated: May 10 2024 with Bootstrap v5.3.3
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+<body>
 <main class="main">
 
     <!-- Page Title -->
@@ -28,38 +65,29 @@
 
         <div class="container">
 
-            <div class="row">
+            <div class="row bg-black justify-content-between">
      @for (int i = 0; i < Model.Count; i++)
     {
-@*                    @Html.AntiForgeryToken()*@
+
         
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="course-item w-100">
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch bg-danger w-50" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="course-item bg-info w-50">
                             <a href="/Lecture/ReadById/@Model[i].Id"><img src="@Model[i].ImageUrl" class="w-100" alt="..."></a>
                             <div class="course-content">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                       @*             < p class="category">Physics</p>*@
-                                    <h3><a ">@Model[i].Name</a></h3>
-                                    <p class="price">$190</p>
+
+                                    <h3><a>@Model[i].Name</a></h3>
+                                   @*  <p class="price">@Model[i].</p> *@
                                 </div>
 
-
-                                <h3><a href="course-details.html">@Model[i].Name</a></h3>
-                                <div width="300" >
                                 <p class="description">@Model[i].Description</p>
-                                </div>
-
-                           @*     <h3><a href="course-details.html">@Model[i].Name</a></h3>*@
-                                <p class="description">@Model[i].Description</p>
-                      @*      <button onclick="addToCart(@Model[i].Id)">Add to Cart</button>*@
-                          @*  <form method="post" action="/Cart/AddToCart?id=@Model[i].Id">*@
-                          @*  <a href="/Cart/Add?id=@item.Id"> <button type="button" class="btn btn-success">Book Tickets</button></a>*@
-                            <a href="/Cart/AddCart?id=@Model[i].Id">  Book Lecture</a>
-                               @* </form>*@
+                              
+                            <a href="/Cart/AddCart?id=@Model[i].Id">Book Lecture</a>
 
 
-                           <a href="/Lecture/Edit?id=@Model[i].Id"  >Edit!</a>
+
+                           <a href="/Lecture/Edit?id=@Model[i].Id">Edit!</a>
                             <div class="trainer d-flex justify-content-between align-items-center">
 
                                     <div class="trainer-profile d-flex align-items-center">
@@ -134,14 +162,15 @@
                 </div> <!-- End Course Item-->*@
 
              
-    }
+    
             </div>
-
+            }
         </div>
+        
 
-   @* </section>
+    </section>
   <!-- /Courses Section -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         function addToCart(lectureId) {
             $.ajax({
@@ -160,9 +189,11 @@
                 }
             });
         }
-    </script>
-*@
+    </script> *@
+
 </main>
+</body>
+</html>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
