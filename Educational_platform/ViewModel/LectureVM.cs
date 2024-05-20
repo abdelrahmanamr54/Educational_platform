@@ -10,7 +10,7 @@ namespace Educational_platform.ViewModel
         public string Name { get; set; }
         public string Description { get; set; }
 
-    //    public double? Price { get; set; }
+        public double? Price { get; set; }
         public string Content { get; set; }
         [Required]
         public string VideoUrl { get; set; }
