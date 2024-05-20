@@ -29,6 +29,7 @@ namespace Educational_platform.Controllers
         {
             return View();
         }
+
         [HttpGet]
 
         public IActionResult AddBookCart(int id)
@@ -153,7 +154,7 @@ namespace Educational_platform.Controllers
                 if (string.IsNullOrEmpty(code))
                 {
                     ViewBag.Message = "Enrollment code cannot be empty!";
-                    return View("Index");
+                    return RedirectToAction("AddCart");
                 }
 
 
