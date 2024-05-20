@@ -51,7 +51,7 @@
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
+                    <li><a asp-controller="Grade" asp-action="getLecturebygrade">Lectures</a></li>
      @*     <li><a href="trainers.html">Trainers</a></li>
           <li><a href="events.html">Events</a></li>*@
                     @if (User.Identity.IsAuthenticated)
