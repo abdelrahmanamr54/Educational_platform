@@ -207,8 +207,9 @@ namespace Educational_platform.Controllers
                     ViewBag.Message = "Invalid enrollment code or course ID!";
                 }
 
-                return View("index","Lecture");
-            }
+            //return View("index","Lecture");
+            return RedirectToAction("index", "Lecture");
+        }
 
             // GET: Enrollment/AllCourses
          
