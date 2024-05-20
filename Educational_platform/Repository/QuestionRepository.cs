@@ -53,7 +53,7 @@ namespace Educational_platform.Repository
             {
                 q.Id = question.Id;
                 q.QAnswers = question.QAnswers;
-                q.CorrectAnswerIndex = question.CorrectAnswerIndex;
+               
                 q.ExamId = question.ExamId;
                 context.SaveChanges();
             }
