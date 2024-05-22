@@ -131,6 +131,7 @@ namespace Educational_platform.Controllers
             {
                 ExamId = exam.Id,
                 ExamName = exam.Name,
+                QuestionImg = exam.QuestionImg,
                 Questions = exam.Questions.Select(q => new QuestionViewModel
                 {
                     Id = q.Id,
