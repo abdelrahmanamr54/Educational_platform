@@ -95,56 +95,7 @@ namespace Educational_platform.Controllers
         }
 
 
-            [HttpGet]
-     
-        public  IActionResult AddToCart(int lecId)
-        {
-
-
-
-
-            //    var lec = context.lectures.Find(lecId
-            //    );
-
-
-            //    LectureVM lectureVM = new LectureVM()
-            //    {
-            //        Id = lec.Id,
-            //        Name = lec.Name,
-            //        Description = lec.Description,
-            //        Content = lec.Content,
-            //        ImageUrl = lec.ImageUrl,
-            //        VideoUrl = lec.VideoUrl,
-            //        GradeId = lec.GradeId,
-            //    };
-
-            //    if (findItem == null)
-            //    {
-            //        return NotFound("Lecture not found");
-            //    }
-
-            //    return View(lectureVM);
-            //Lecture? lec = lectureRepository.ReadById(lecId);
-            ////if (lec == null)
-            ////{
-            ////    return RedirectToAction("Index");
-            ////}
-
-
-            //LectureVM lectureVM = new LectureVM()
-            //{
-            //    Id = lec.Id,
-            //    Name = lec.Name,
-            //    Description = lec.Description,
-            //    Content = lec.Content,
-            //    ImageUrl = lec.ImageUrl,
-            //    VideoUrl = lec.VideoUrl,
-            //    GradeId = lec.GradeId,
-            //};
-
-            return View();
-        }
- 
+           
 
             // GET: Enrollment/Index
          
@@ -211,12 +162,76 @@ namespace Educational_platform.Controllers
             //return View("index","Lecture");
             return RedirectToAction("index", "Lecture");
         }
+        [HttpPost]
+        public async Task<IActionResult> EnrollBook(int BookId, string code)
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                ViewBag.Message = "Enrollment code cannot be empty!";
+                return RedirectToAction("AddCart");
+            }
 
-            // GET: Enrollment/AllCourses
-         
+
+            var enrollmentCode = context.enrollmentCodes
+                .FirstOrDefault(e => e.Code == code);
+
+            if (enrollmentCode != null)
+            {
+
+                var user = await userManager.GetUserAsync(User);
+                if (user == null)
+                {
+
+                    return RedirectToAction("Login", "Account");
+                }
+                var book = await context.books.FindAsync(BookId);
+                string userlogedgradeId = user.Id;
 
 
-    [HttpPost]
+                var existingEnrollment = context.bookCarts
+                        .FirstOrDefault(e => e.bookId == BookId && e.StudentId == userlogedgradeId);
+
+                if (existingEnrollment != null)
+                {
+                    ViewBag.Message = "You are already enrolled in this course!";
+                }
+                else
+                {
+
+
+
+                    var enrollment = new BookCart
+                    {
+                        StudentId = userlogedgradeId,
+                      bookId = BookId,
+                       book = book
+                    };
+
+                    context.bookCarts.Add(enrollment);
+
+                    context.SaveChanges();
+
+                    // Mark the enrollment code as used (delete or mark it in some way)
+                    context.enrollmentCodes.Remove(enrollmentCode);
+                    context.SaveChanges();
+
+                    ViewBag.Message = "Enrolled successfully!";
+                }
+            }
+            else
+            {
+                ViewBag.Message = "Invalid enrollment code or course ID!";
+            }
+
+            //return View("index","Lecture");
+            return RedirectToAction("index", "Lecture");
+        }
+
+        // GET: Enrollment/AllCourses
+
+
+
+        [HttpPost]
 
         public async Task<IActionResult> Add_To_Cart(int id)
         {
