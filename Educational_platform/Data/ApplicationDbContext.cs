@@ -46,7 +46,16 @@ namespace Educational_platform.Data
     .HasForeignKey(p => p.GradeId).OnDelete(DeleteBehavior.Restrict)
    ; // or DeleteBehavior.NoAction
 
-          
+
+
+
+            modelBuilder.Entity<Exam>()
+            .HasOne(e => e.Lecture)
+            .WithOne(l => l.Exam)
+            .HasForeignKey<Exam>(e => e.LectureId);
+
+            base.OnModelCreating(modelBuilder);
+
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
