@@ -55,22 +55,25 @@
        @* <dt class="col-sm-2">
             Name
         </dt>*@
-    <p class="category ">
+        <p style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px; 
+transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;" class="category ">
          Name:                           @Model.Name
         </p>
         @*<pclass="col-sm-2">
             Price
         </p>*@
-        <p class="col-sm-10 category">
+        <p style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px;
+           transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;"class=" category">
      Price:                      @Model.Price
         </p>
        @* <dt class="col-sm-2">
             grade
         </dt>*@
-    <p class="col-sm-10 category">
-          Hrade:                 @Model.grade.Name
+        <p style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px;
+           transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;" class=" category">
+          Grade:                 @Model.grade.Name
         </p>
-        <p class="category">grade.Name</p>
+
 
     <div>
         <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download">Download the Book</a>
