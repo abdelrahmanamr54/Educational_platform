@@ -84,11 +84,11 @@
                     @for (int i = 0; i < Model.Count; i++){
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="course-item w-100">
-                                <a href="/Book/ReadByid/@Model[i].Id" class="category" >   <img src="@Model[i].ImageUrl" class="" alt="..." height="400" width="380"></a>
+                                <a href="/Book/ReadById/@Model[i].Id" class="category" ><img src="@Model[i].ImageUrl" class="" alt="..." height="400" width="380"></a>
                             <div class="course-content">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                         <p class="category">@Model[i].grade.Name</p>
-                                    <p class="price">@Model[i].Price</p>
+                                    @* <p class="price">@Model[i].Price</p> *@
                                     
                                 </div>
 

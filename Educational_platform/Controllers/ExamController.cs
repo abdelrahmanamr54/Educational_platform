@@ -59,7 +59,7 @@ namespace Educational_platform.Controllers
                 Exam exam = new Exam();
                 exam.Name = examVM.Name;
                 exam.Description = examVM.Description;
-    //          exam.QuestionImg = examVM.QuestionImg;
+                //exam.QuestionImg = examVM.QuestionImg;
                 exam.LectureId = examVM.LectureId;
 
                 examRepository.Create(exam);
@@ -85,7 +85,7 @@ namespace Educational_platform.Controllers
                 Id = exam.Id,
                 Name = exam.Name,
                 Description = exam.Description,
-            //   QuestionImg = exam.QuestionImg,
+                //QuestionImg = exam.QuestionImg,
                 LectureId = exam.LectureId,
 
             };
@@ -131,7 +131,7 @@ namespace Educational_platform.Controllers
             {
                 ExamId = exam.Id,
                 ExamName = exam.Name,
-               // QuestionImg = exam.QuestionImg,
+                //QuestionImg = exam.QuestionImg,
                 Questions = exam.Questions.Select(q => new QuestionViewModel
                 {
                     Id = q.Id,

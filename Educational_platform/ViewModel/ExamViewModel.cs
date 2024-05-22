@@ -4,7 +4,7 @@
     {
         public int ExamId { get; set; }
         public string ExamName { get; set; }
-        public string QuestionImg { get; set; }
+        //public string QuestionImg { get; set; }
         public List<QuestionViewModel> Questions { get; set; }
     }
 }

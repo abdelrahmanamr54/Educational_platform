@@ -41,49 +41,50 @@
     ======================================================== -->
 </head>
 <body >
-<h1>ReadById</h1>
+
 @*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 *@
-<div class="d-flex flex-column align-items-center ">
-    @*<h4>Book</h4>
-    <hr />*@
-    
-     <img  style="width:25%;height:auto" src="@Model.ImageUrl" class="" alt="..."  >
-       @* <dt class="col-sm-2">
-            Name
-        </dt>*@
-        <p style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px; 
-transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;" class="category ">
-         Name:                           @Model.Name
-        </p>
-        @*<pclass="col-sm-2">
-            Price
-        </p>*@
-        <p style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px;
-           transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;"class=" category">
-     Price:                      @Model.Price
-        </p>
-       @* <dt class="col-sm-2">
-            grade
-        </dt>*@
-        <p style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px;
-           transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;" class=" category">
-          Grade:                 @Model.grade.Name
-        </p>
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center text-center" style="height: 100vh; width:100%">
 
+            <div class="image w-50 m-auto">
+            <img style="width:70%;height:auto" src="@Model.ImageUrl" class="" alt="...">
+            </div>
+            <div class="content w-50 m-auto">
+                <h2 class="category ">
+                   @Model.Name
+                </h2>
+             
+                <h3 class=" category">
+                   @* @Model.Price EGP *@
+                </h3>
+               
+                @* <dt class="col-sm-2">
+                grade
+                </dt>*@
+                <h3 class=" category">
+                 @Model.grade.Name
+                </h3>
+                <br />
+                <div class="row justify-content-evenly m-auto" style="width: 60%">
+                    <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download" style="width:40%; background-color: #5fcf80; border: 0; padding: 10px 5px;
+transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 45px;">Download <i class="fa-solid fa-download"></i></a>
+                    <br /><br />
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" style="width:30%; background-color: #5fcf80; border: 0; padding: 10px 5px;
+transition: 0.4s; margin-top:12px;color:#ffffff; text-align: center; border-radius: 45px;"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+                    <br />
+                    <br />
+                   
 
-    <div>
-        <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download">Download the Book</a>
-        <br />
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+                </div>
+            </div>
+        </div>
         <br />
         <a asp-action="Index">Back to List</a>
-
     </div>
-</div>
 
      </body>
 
