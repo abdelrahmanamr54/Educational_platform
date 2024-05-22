@@ -3,41 +3,85 @@
 @{
     ViewData["Title"] = "ReadById";
 }
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Courses - Mentor Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-KYd0BKFip0N3ZWgJfKcxKz4VqOen+LeThInO+RE4BwZZ/zByMmZX5DvduBddajVoz/SqLxhGS+mra2TcdWVrsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="~/assets/css/main.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Mentor
+    * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+    * Updated: May 10 2024 with Bootstrap v5.3.3
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+<body >
 <h1>ReadById</h1>
 @*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 *@
-<div>
-    <h4>Book</h4>
-    <hr />
-    <dl class="row  text-center">
-
-     @*   <img  style="width:25%;height:auto" src="@Model.ImageUrl" class="" alt="..."  >*@
-        <dt class="col-sm-2">
+<div class="d-flex flex-column align-items-center ">
+    @*<h4>Book</h4>
+    <hr />*@
+    
+     <img  style="width:25%;height:auto" src="@Model.ImageUrl" class="" alt="..."  >
+       @* <dt class="col-sm-2">
             Name
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Name
-        </dd>
-        <dt class="col-sm-2">
+        </dt>*@
+    <p class="category ">
+         Name:                           @Model.Name
+        </p>
+        @*<pclass="col-sm-2">
             Price
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Price
-        </dd>
-        <dt class="col-sm-2">
+        </p>*@
+        <p class="col-sm-10 category">
+     Price:                      @Model.Price
+        </p>
+       @* <dt class="col-sm-2">
             grade
-        </dt>
-        <dd class="col-sm-10">
-            @Model.grade.Name
-        </dd>
-    </dl>
+        </dt>*@
+    <p class="col-sm-10 category">
+          Hrade:                 @Model.grade.Name
+        </p>
+        <p class="category">grade.Name</p>
+
+    <div>
+        <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download">Download the Book</a>
+        <br />
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+        <br />
+        <a asp-action="Index">Back to List</a>
+
+    </div>
 </div>
-<div>
-    <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download">Download the Book</a>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+     </body>
+
+</html>
