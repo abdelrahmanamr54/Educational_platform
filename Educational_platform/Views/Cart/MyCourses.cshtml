@@ -34,11 +34,11 @@
     {
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                     <div class="course-item">
-                            <img src="@Model[i].Lecture.ImageUrl" class="img-fluid" alt="...">
+                            <a href="/Lecture/ReadById/@Model[i].Lecture.Id"> <img src="@Model[i].Lecture.ImageUrl" class="img-fluid" alt="..."></a>
                         <div class="course-content">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <p class="category"></p>
-                                    <p class="price">$175</p>
+                                    <a href="/Lecture/ReadById/@Model[i].Lecture.Id"><p class="">@Model[i].Lecture.Name</p></a>
                             </div>
 
                                 <h3><a href="course-details.html">@Model[i].Lecture.Content</a></h3>

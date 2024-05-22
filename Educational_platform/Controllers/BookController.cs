@@ -4,6 +4,7 @@ using Educational_platform.Models;
 using Educational_platform.Repository;
 using Educational_platform.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Printing;
 
 namespace Educational_platform.Controllers
 {
@@ -110,5 +111,39 @@ namespace Educational_platform.Controllers
 
 
         }
+
+
+        //public IActionResult DownloadPdf(int id)
+        //{
+        //    var book = bookRepository.ReadById(id);
+        //    if (book == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    if (string.IsNullOrEmpty(book.PdfPath))
+        //    {
+        //        return NotFound(); 
+        //    }
+         
+        //    var document = new Document(PageSize.A4);
+
+            
+        //    using (var memoryStream = new MemoryStream())
+        //    {
+        //        PdfWriter.GetInstance(document, memoryStream);
+
+               
+        //        document.Open();
+
+                
+        //        document.Add(new Paragraph(book.Name));
+        //        document.Add(new Paragraph(book.Price.ToString()));
+                
+        //        document.Close();
+
+
+        //        return File(memoryStream.ToArray(), "application/pdf", $"{book.Name}.pdf");
+        //    }
+        //}
     }
 }
