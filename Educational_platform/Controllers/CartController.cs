@@ -270,6 +270,26 @@ namespace Educational_platform.Controllers
         }
 
 
+        [HttpGet]
+
+        public async Task<IActionResult> MyBooks()
+        {
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                // return Json(new { success = false, message = "Userr nott logged in." });
+                return RedirectToAction("Login", "Account");
+            }
+            string userlogedgradeId = user.Id;
+
+
+            var usercart = context.bookCarts.Include(e => e.book).Where(e => e.StudentId == userlogedgradeId).ToList();
+
+            return View(usercart);
+
+        }
+
+
     }
 
 
