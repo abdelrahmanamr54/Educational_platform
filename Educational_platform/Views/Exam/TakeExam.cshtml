@@ -1,5 +1,6 @@
-﻿@model Educational_platform.ViewModel.ExamViewModel
-
+﻿
+    @model Educational_platform.ViewModel.ExamViewModel
+@*
 
 <form asp-action="SubmitExam" asp-controller="Exam" method="post">
 
@@ -23,4 +24,25 @@
         </div>
     }
     <button type="submit">Submit</button>
+</form>
+*@
+
+
+@*@model ExamViewModel*@
+
+<form asp-action="SubmitExam" method="post">
+    <img src="@Model.QuestionImg" width="1000" />
+    @for (int i = 0; i < Model.Questions.Count; i++)
+    {
+        <div>
+          @*  <p>@Model.Questions[i].QAnswers.Text</p>*@
+            <input type="hidden" asp-for="Questions[i].Id" />
+            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="A" /> A
+            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="B" /> B
+            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="C" /> C
+            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="D" /> D
+        </div>
+    }
+
+    <button type="submit">Submit Exam</button>
 </form>

@@ -131,11 +131,11 @@ namespace Educational_platform.Controllers
             {
                 ExamId = exam.Id,
                 ExamName = exam.Name,
-               // QuestionImg = exam.QuestionImg,
+                QuestionImg = exam.QuestionImg,
                 Questions = exam.Questions.Select(q => new QuestionViewModel
                 {
                     Id = q.Id,
-                   // Text = q.Text
+               
                 }).ToList()
             };
 
@@ -148,8 +148,9 @@ namespace Educational_platform.Controllers
          //   if (ModelState.IsValid)
           //  {
                 int score = 0;
-            int totalQuestions = 10;
-                //model.Questions.Count;
+            int totalQuestions =  model.Questions.Count;;
+
+
 
                 foreach (var question in model.Questions)
                 {
