@@ -7,7 +7,8 @@
         public string ImageUrl { get; set; }
         public double Price { get; set; }
         public int GradeId { get; set; }
-       
+
+        public string FilePath { get; set; }
 
         public Grade grade { get; set; }
     }

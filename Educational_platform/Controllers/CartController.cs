@@ -267,6 +267,14 @@ namespace Educational_platform.Controllers
             // return View(cart);
 
         }
+        public IActionResult Download(int id )
+        {
+            var book = context.books.Find(id);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files", book.FilePath);
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+            var fileName = book.FilePath;
+            return File(fileBytes, "application/pdf", fileName);
+        }
 
 
     }
