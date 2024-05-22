@@ -42,7 +42,7 @@ namespace Educational_platform.Controllers
             {
                 Id = book.Id,
                 Name = book.Name,
-               Price= book.Price,
+               //Price= book.Price,
               
                 ImageUrl = book.ImageUrl,
            

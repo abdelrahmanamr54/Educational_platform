@@ -18,8 +18,8 @@ namespace Educational_platform.Data
         public DbSet<CartItem> cartItems { get; set; }
         public DbSet<BookCart> bookCarts
         { get; set; }
-        public DbSet<EnrollmentCode> enrollmentCodes
-        { get; set; }
+        public DbSet<EnrollmentCode> enrollmentCodes { get; set; }
+        public DbSet<EnrollmentCodeBook> enrollmentCodeBooks { get; set; }
 
         public DbSet<Contactus> contactus { get; set; }
        // public DbSet<StudentVM> studentVMs { get; set; } = default!;
