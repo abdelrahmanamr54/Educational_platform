@@ -6,13 +6,13 @@
 
     <h2>@Model.ExamName</h2>
     @* <img src="@Model.QuestionImg" width="1000"/> *@
-   @* @for (int i = 0; i < Model.Questions.Count; i++)
+ @*    @for (int i = 0; i < Model.Questions.Count; i++)
     {
         <div>
 
             
              
-             
+      @*        
             @foreach (var choice in Model.Questions[i].Choices)
             {
                 
@@ -23,26 +23,41 @@
             }
         </div>
     }
-    <button type="submit">Submit</button>
-</form>*@
+    <button type="submit">Submit</button> *@
+@* </form>  *@
 
 
 
 @*@model ExamViewModel*@
 
+
 <form asp-action="SubmitExam" method="post">
+    <br />
     <img src="@Model.QuestionImg" width="1000" />
+    <br /> <br /> <br />
+    <div class="">
     @for (int i = 0; i < Model.Questions.Count; i++)
     {
-        <div>
+        <div class="row w-25">
           @*  <p>@Model.Questions[i].QAnswers.Text</p>*@
-            <input type="hidden" asp-for="Questions[i].Id" />
-            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="A" /> A
-            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="B" /> B
-            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="C" /> C
-            <input type="radio" asp-for="Questions[i].SelectedAnswer" value="D" /> D
+          <p class="w-25 text-end">@(i+1)</p>
+            <div class="w-75">
+                    <input type="hidden" asp-for="Questions[i].Id" />
+                    <input type="radio" asp-for="Questions[i].SelectedAnswer" value="A" /> A
+                    <input type="radio" asp-for="Questions[i].SelectedAnswer" value="B" /> B
+                    <input type="radio" asp-for="Questions[i].SelectedAnswer" value="C" /> C
+                    <input type="radio" asp-for="Questions[i].SelectedAnswer" value="D" /> D
+            </div>
         </div>
     }
-
-    <button type="submit">Submit Exam</button>
+    </div>
+    
+    <div class="w-100 ps-4">
+    <button type="submit" style="width:12%; background-color: #5fcf80; border: 0; padding: 10px 5px;
+            transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 45px; margin-left:30px">
+        Submit Exam
+    </button>
+    </div>
+    <br />
+    <br />
 </form>
