@@ -48,7 +48,7 @@ namespace Educational_platform.Controllers
                 lec.Content = lectureVM.Content;
                 lec.ImageUrl = lectureVM.ImageUrl;
                 lec.VideoUrl = lectureVM.VideoUrl;
-                lec.Price = lectureVM.Price;
+             //   lec.Price = lectureVM.Price;
                 lec.GradeId = lectureVM.GradeId;
                 
                 lectureRepository.Create(lec);

@@ -172,7 +172,7 @@ namespace Educational_platform.Controllers
             }
 
 
-            var enrollmentCode = context.enrollmentCodes
+            var enrollmentCode = context.enrollmentCodeBooks
                 .FirstOrDefault(e => e.Code == code);
 
             if (enrollmentCode != null)
@@ -212,7 +212,7 @@ namespace Educational_platform.Controllers
                     context.SaveChanges();
 
                     // Mark the enrollment code as used (delete or mark it in some way)
-                    context.enrollmentCodes.Remove(enrollmentCode);
+                    context.enrollmentCodeBooks.Remove(enrollmentCode);
                     context.SaveChanges();
 
                     ViewBag.Message = "Enrolled successfully!";
