@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Numerics;
+using System.Security.Cryptography;
 
 namespace Educational_platform.Repository
 {
@@ -74,7 +75,7 @@ namespace Educational_platform.Repository
             return oldgrade;
 
         }
-    
+        
         public Grade Update(Grade grade)
         {
             var oldgrade = context.grades.Find(grade.Id);

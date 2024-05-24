@@ -15,9 +15,9 @@ namespace Educational_platform.IRepositery
         List<Lecture> GetLecturerById(int LId);
        
         List<Book> GetBookById(int BId);
-       
-      //  List<StudentVM> GetstudentById(int sId);
-       
+
+        //  List<StudentVM> GetstudentById(int sId);
+        
 
         List<Grade> ReadAll();
 

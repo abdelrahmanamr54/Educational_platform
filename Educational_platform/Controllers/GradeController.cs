@@ -36,8 +36,9 @@ namespace Educational_platform.Controllers
             var grade = gradeRepository.ReadAll();
             return View(grade);
         }
+
         [Authorize]
-        public async Task<IActionResult> getLecturebygrade(  )
+        public async Task<IActionResult> getLecturebygrade()
         {
             
             var user = await userManager.GetUserAsync(User);
@@ -60,6 +61,8 @@ namespace Educational_platform.Controllers
            
             return View(lectures);
         }
+
+        
 
         public async Task<IActionResult> getBookbyGrade(int id)
         {
