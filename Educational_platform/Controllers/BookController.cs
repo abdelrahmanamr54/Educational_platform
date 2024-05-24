@@ -115,6 +115,18 @@ namespace Educational_platform.Controllers
 
 
         }
+        [HttpGet]
+        public IActionResult FilterBooks(int? gradeId)
+        {
+            var books = applicationDbContext.books.AsQueryable();
+
+            if (gradeId.HasValue && gradeId.Value > 0)
+            {
+                books = books.Where(l => l.GradeId == gradeId.Value);
+            }
+
+            return PartialView("~/Views/Shared/PartialView/_ShowAllBooks.cshtml", books.ToList());
+        }
 
 
         //public IActionResult DownloadPdf(int id)
@@ -128,21 +140,21 @@ namespace Educational_platform.Controllers
         //    {
         //        return NotFound(); 
         //    }
-         
+
         //    var document = new Document(PageSize.A4);
 
-            
+
         //    using (var memoryStream = new MemoryStream())
         //    {
         //        PdfWriter.GetInstance(document, memoryStream);
 
-               
+
         //        document.Open();
 
-                
+
         //        document.Add(new Paragraph(book.Name));
         //        document.Add(new Paragraph(book.Price.ToString()));
-                
+
         //        document.Close();
 
 

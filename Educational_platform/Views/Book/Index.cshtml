@@ -1,9 +1,42 @@
 ﻿
-
+@*
 <partial name="~/Views/Shared/PartialView/_showAllBooks.cshtml"></partial>
 
 
 @section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml"></partial>
+}
+*@
+
+
+
+
+@model List<Educational_platform.Models.Book>
+
+<select id="gradeFilter" onchange="filterLectures()">
+    <option value="0">All</option>
+    <option value="1">Grade 1</option>
+    <option value="2">Grade 2</option>
+    <option value="3">Grade 3</option>
+    <!-- Add more options as needed -->
+</select>
+
+<div id="lecturesContainer">
+    @Html.Partial("~/Views/Shared/PartialView/_ShowAllBooks.cshtml", Model)
+    @* <partial name="~/Views/Shared/PartialView/_ShowAllLecPartial.cshtml" model="Model"></partial>*@
+</div>
+@*<partial name="~/Views/Shared/PartialView/_ShowAllLecPartial.cshtml" model="Model"></partial>*@
+@section Scripts {
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function filterLectures() {
+            var gradeId = document.getElementById("gradeFilter").value;
+            $.get('@Url.Action("FilterBooks", "Book")', { gradeId: gradeId }, function (data) {
+                $('#lecturesContainer').html(data);
+            });
+        }
+    </script>
     <partial name="_ValidationScriptsPartial.cshtml"></partial>
 }
 
