@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace Educational_platform.Controllers
@@ -42,11 +43,9 @@ namespace Educational_platform.Controllers
             {
                 Id = book.Id,
                 Name = book.Name,
-               //Price= book.Price,
-              
+                Price= book.Price,
                 ImageUrl = book.ImageUrl,
-           
-              
+
             };
             return View(bookVM);
         }
@@ -167,64 +166,76 @@ namespace Educational_platform.Controllers
         {
             if (string.IsNullOrEmpty(code))
             {
-                ViewBag.Message = "Enrollment code cannot be empty!";
-                return RedirectToAction("AddCart");
+               
+                //ViewData["Message"] = "Enrollment code cannot be empty!";
+                TempData["Message"] = "Enrollment code cannot be empty!";
+                return RedirectToAction("AddBookCart", new { id = BookId });
+               
             }
 
 
             var enrollmentCode = context.enrollmentCodeBooks
                 .FirstOrDefault(e => e.Code == code);
-
-            if (enrollmentCode != null)
+            if(enrollmentCode == null)
             {
-
-                var user = await userManager.GetUserAsync(User);
-                if (user == null)
-                {
-
-                    return RedirectToAction("Login", "Account");
-                }
-                var book = await context.books.FindAsync(BookId);
-                string userlogedgradeId = user.Id;
-
-
-                var existingEnrollment = context.bookCarts
-                        .FirstOrDefault(e => e.bookId == BookId && e.StudentId == userlogedgradeId);
-
-                if (existingEnrollment != null)
-                {
-                    ViewBag.Message = "You are already enrolled in this course!";
-                }
-                else
-                {
-
-
-
-                    var enrollment = new BookCart
-                    {
-                        StudentId = userlogedgradeId,
-                      bookId = BookId,
-                       book = book
-                    };
-
-                    context.bookCarts.Add(enrollment);
-
-                    context.SaveChanges();
-
-                    // Mark the enrollment code as used (delete or mark it in some way)
-                    context.enrollmentCodeBooks.Remove(enrollmentCode);
-                    context.SaveChanges();
-
-                    ViewBag.Message = "Enrolled successfully!";
-                }
+                return NotFound("null");
             }
             else
             {
-                ViewBag.Message = "Invalid enrollment code or course ID!";
+                if (enrollmentCode != null)
+                {
+
+                    var user = await userManager.GetUserAsync(User);
+                    if (user == null)
+                    {
+
+                        return RedirectToAction("Login", "Account");
+                    }
+                    var book = await context.books.FindAsync(BookId);
+                    string userlogedgradeId = user.Id;
+
+
+                    var existingEnrollment = context.bookCarts
+                            .FirstOrDefault(e => e.bookId == BookId && e.StudentId == userlogedgradeId);
+
+                    if (existingEnrollment != null)
+                    {
+                        ViewBag.Message = "You are already enrolled in this course!";
+                    }
+                    else
+                    {
+
+
+
+                        var enrollment = new BookCart
+                        {
+                            StudentId = userlogedgradeId,
+                            bookId = BookId,
+                            book = book
+                        };
+
+                        context.bookCarts.Add(enrollment);
+
+                        context.SaveChanges();
+
+                        // Mark the enrollment code as used (delete or mark it in some way)
+                        context.enrollmentCodeBooks.Remove(enrollmentCode);
+                        context.SaveChanges();
+
+                        ViewBag.Message = "Enrolled successfully!";
+                    }
+
+                }
+                else
+                {
+                    ViewBag.Message = "Invalid enrollment code or course ID!";
+                }
             }
 
+           
+
             //return View("index","Lecture");
-            return RedirectToAction("index", "Lecture");
+            return RedirectToAction("MyBooks");
         }
 
         // GET: Enrollment/AllCourses
@@ -279,7 +290,7 @@ namespace Educational_platform.Controllers
 
             object value = context.bookCarts.AddAsync(new BookCart {bookId= book.Id, StudentId = userlogedgradeId, book = book});
             context.SaveChanges();
-            return RedirectToAction("Index", "home");
+            return RedirectToAction("MyBooks", "Cart");
             // return View(cart);
 
         }

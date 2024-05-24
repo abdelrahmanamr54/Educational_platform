@@ -4,10 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="container">
+    <h1>Edit</h1>
 
-<h4>QuestionVM</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <Form asp-controller ="Question" asp-action="SaveEdit" method="post">
@@ -24,7 +23,8 @@
                 <span asp-validation-for="ExamId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save"  style="width:100px; background-color: #5fcf80; border: 0; padding: 10px 10px;
+transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 45px;" />
             </div>
         </form>
     </div>
@@ -32,6 +32,7 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div>
 </div>
 
 @section Scripts {

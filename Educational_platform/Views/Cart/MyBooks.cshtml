@@ -1,7 +1,115 @@
 ﻿@model List<Educational_platform.Models.BookCart>
 
+<body class="courses-page">
 
-<main class="main">
+
+
+    <main class="main">
+
+        <!-- Page Title -->
+        <div class="page-title" data-aos="fade">
+            <div class="heading">
+                <div class="container">
+                    @* <h1>Index</h1> *@
+
+                    
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-lg-8">
+                            <h1>Books</h1>
+                            <p class="mb-0">
+                                Aligned with Curriculum: All our materials are carefully selected to match the secondary school physics curriculum, ensuring relevance and accuracy.
+                                Expertly Written: Our books are authored by experienced educators and subject matter experts, providing you with trustworthy and high-quality content.
+                                Engaging and Interactive: We believe in making learning physics fun and interactive, with plenty of resources to keep students engaged and motivated.
+                                Comprehensive Support: From foundational concepts to advanced theories, our collection covers all levels of understanding, providing comprehensive support for both students and teachers..
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="breadcrumbs">
+                <div class="container">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="current">Books</li>
+                        <li>
+   
+                                <a href="/Book/CreateNew">Create New</a>
+      
+                        </li>
+                    </ol>
+                </div>
+            </nav>
+        </div><!-- End Page Title -->
+        <!-- Courses Section -->
+        <section id="courses" class="courses section">
+
+            <div class="container">
+
+                <div class="row">
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch my-2" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="course-item w-75">
+                                <a href="/Book/ReadById/@Model[i].book.Id"><img src="@Model[i].book.ImageUrl" class="w-100" height="400" alt="..."></a>
+                                <div class="course-content w-100">
+                                    
+                                    <div class="d-flex justify-content-between align-items-center mb-3 w-100">
+                                        
+                                        @* <p class="category">@Model[i].Price EPG</p> *@
+                                        @*     <p class="price">@Model[i].Price EGP</p>*@
+                                    </div>
+                                    <h3><a href="/Book/ReadById/@Model[i].book.Id">@Model[i].book.Name</a></h3>
+
+
+
+                                    <div class="trainer w-100">
+                                        @*   <div class="trainer-profile align-items-center">
+                                    <a href="/Cart/AddCart/@Model[i].Id" class="category">Book Lecture</a><br />
+
+                                    </div> *@
+                                        <div class="d-flex justify-content-center trainer-rank align-items-center">
+                                            <a href="/Book/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+                                            <a href="/Book/Delete/@Model[i].Id" class="category m-2 "><i class="fa-regular fa-trash-can btn-del"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End Course Item-->
+                    }
+
+                  
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    @*     <div id="preloader"></div> *@
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+@* <main class="main">
 
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
@@ -44,7 +152,7 @@
 
                                 @* <h3><a href="course-details.html">@Model[i].book.Price</a></h3> *@
                                 @* <p class="description">@Model[i].Lecture.Description</p> *@
-                                <div class="trainer d-flex justify-content-between align-items-center">
+                                @* <div class="trainer d-flex justify-content-between align-items-center">
                                     <div class="trainer-profile d-flex align-items-center">
                                         <img src="assets/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">
                                         <a href="" class="trainer-link">Antonio</a>
@@ -61,4 +169,5 @@
                             
                         </div>
                     </div> <!-- End Course Item-->
-                }
+                } *@
+ 
