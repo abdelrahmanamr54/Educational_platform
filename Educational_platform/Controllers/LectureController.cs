@@ -179,7 +179,7 @@ namespace Educational_platform.Controllers
                 lectures = lectures.Where(l => l.GradeId == gradeId.Value);
             }
 
-            return PartialView("_ShowAllLecPartial", lectures.ToList());
+            return PartialView("~/Views/Shared/PartialView/_ShowAllLecPartial.cshtml", lectures.ToList());
         }
 
 
