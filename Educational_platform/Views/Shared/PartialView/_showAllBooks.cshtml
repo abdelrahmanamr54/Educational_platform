@@ -112,8 +112,12 @@
                                             @* <a href="/Lecture/Edit/@Model[i].Id">Edit</a> *@
                                         </div>
                                         <div class="trainer-rank d-flex align-items-center">
-                                            <a href="/Book/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+                                            @if (User.IsInRole("Admin"))
+                                            {
+                                                <a href="/Book/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
                                             <a href="/Book/Delete/@Model[i].Id" class="category m-2 "><i class="fa-regular fa-trash-can btn-del"></i></a>
+                                            }
+                                            
                                         </div>
                                     </div>
                                 </div>

@@ -2,7 +2,10 @@
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Educational_platform.Controllers
 {
@@ -15,6 +18,8 @@ namespace Educational_platform.Controllers
             this.lectureRepository = lectureRepository;
             this.context = context;
         }
+
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var listOfLectures = lectureRepository.ReadAll();
@@ -48,7 +53,7 @@ namespace Educational_platform.Controllers
                 lec.Content = lectureVM.Content;
                 lec.ImageUrl = lectureVM.ImageUrl;
                 lec.VideoUrl = lectureVM.VideoUrl;
-             //   lec.Price = lectureVM.Price;
+                lec.Price = lectureVM.Price;
                 lec.GradeId = lectureVM.GradeId;
                 
                 lectureRepository.Create(lec);
@@ -107,6 +112,8 @@ namespace Educational_platform.Controllers
 
             return View(lectureVM);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -144,7 +151,7 @@ namespace Educational_platform.Controllers
             lectureRepository.Update(lecture);
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -162,8 +169,19 @@ namespace Educational_platform.Controllers
             return View(lec);
 
         }
+        [HttpGet]
+        public IActionResult FilterLectures(int? gradeId)
+        {
+            var lectures = context.lectures.AsQueryable();
 
-       
+            if (gradeId.HasValue && gradeId.Value > 0)
+            {
+                lectures = lectures.Where(l => l.GradeId == gradeId.Value);
+            }
+
+            return PartialView("_ShowAllLecPartial", lectures.ToList());
+        }
+
 
 
     }

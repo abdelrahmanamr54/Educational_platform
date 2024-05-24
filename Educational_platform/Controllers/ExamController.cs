@@ -2,8 +2,10 @@
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Educational_platform.Controllers
 {
@@ -16,6 +18,7 @@ namespace Educational_platform.Controllers
             this.examRepository = examRepository;
             this.context = context;
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var listOfExams = examRepository.ReadAll();
@@ -42,7 +45,7 @@ namespace Educational_platform.Controllers
 
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateNew()
         {
@@ -70,7 +73,7 @@ namespace Educational_platform.Controllers
             return View("CreateNew", examVM);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             Exam? exam = examRepository.ReadById(id);
@@ -106,7 +109,7 @@ namespace Educational_platform.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(int id)
         {

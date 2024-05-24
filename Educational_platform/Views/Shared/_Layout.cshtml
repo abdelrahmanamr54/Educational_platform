@@ -61,7 +61,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="index" class="active">Home</a></li>
          @* <li><a href="about.html">About</a></li>*@
                     <li><a asp-controller="Grade" asp-action="getLecturebygrade">Lectures</a></li>
                     <li><a asp-controller="Grade" asp-action="getBookbyGrade">Books</a></li>
@@ -89,7 +89,43 @@
                         </li>
 
                     }
-          <li><a href="pricing.html">Pricing</a></li>
+@*          <li><a href="pricing.html">Pricing</a></li>*@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Contactus" asp-action="showAllContact">Inbox <i class="fa-solid fa-envelope"></i> </a></li>
+                               
+
+                              
+                                
+              <li class="dropdown"><a href="#"><span>Lecture</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                                        <li><a asp-controller="Lecture" asp-action="Index">Show All Lectures</a></li>
+                 @* <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>*@
+                </ul>
+              </li>
+                                <li class="dropdown">
+                                    <a href="#"><span>Book</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                    <ul>
+                                        <li><a asp-controller="Book" asp-action="index">Show Books</a></li>
+                                       @* <li><a href="#">Deep Dropdown 2</a></li>
+                                        <li><a href="#">Deep Dropdown 3</a></li>
+                                        <li><a href="#">Deep Dropdown 4</a></li>
+                                        <li><a href="#">Deep Dropdown 5</a></li>*@
+                                    </ul>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    }
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
                             <li class="nav-item">
@@ -101,6 +137,8 @@
                            @* <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Login">Login</a>
                             </li>*@
+                           
+
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="#">Deep Dropdown 1</a></li>

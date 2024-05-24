@@ -23,11 +23,13 @@ namespace Educational_platform.Controllers
             this.userManager = userManager;
 
         }
+
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult showAllgrades()
         {
 
@@ -84,7 +86,7 @@ namespace Educational_platform.Controllers
             //var students = gradeRepository.GetstudentById(id);
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult editGrade(int id)
         {
@@ -92,7 +94,10 @@ namespace Educational_platform.Controllers
             
             return View(grade);
         }
-    
+
+
+
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
 
@@ -105,11 +110,15 @@ namespace Educational_platform.Controllers
             gradeRepository.Update(grade);
             return RedirectToAction("Index", "Home");
         }
+
+        [Authorize(Roles = "Admin")]
         public IActionResult deleteGrade(Grade grade)
         {
             gradeRepository.Delete(grade);
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult addGrade()
         {
@@ -118,7 +127,7 @@ namespace Educational_platform.Controllers
 
             return View();
         }
-
+      
         [HttpPost]
 
         public IActionResult add_Grade(GradeVM grade)

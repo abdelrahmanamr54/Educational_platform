@@ -54,8 +54,12 @@
                                         @* <a href="/Lecture/Edit/@Model[i].Id">Edit</a> *@
                                     </div>
                                     <div class="trainer-rank d-flex align-items-center">
-                                        <a href="/Lecture/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
-                                        <a href="/Lecture/Delete/@Model[i].Id" class="category m-2 "><i class="fa-regular fa-trash-can btn-del"></i></a>
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <a href="/Lecture/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+                                            <a href="/Lecture/Delete/@Model[i].Id" class="category m-2 "><i class="fa-regular fa-trash-can btn-del"></i></a>
+                                        }
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -70,4 +74,3 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yioodox6eL8?si=E40r4fCK0SSG6bqZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

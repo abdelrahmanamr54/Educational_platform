@@ -1,0 +1,162 @@
+﻿@model Educational_platform.Models.Contactus
+
+@{
+    ViewData["Title"] = "addcontact";
+}
+
+<h1>addcontact</h1>
+
+<h4>Contactus</h4>
+<hr />
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="add_contact">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>*@
+
+
+
+
+<main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Contact</h1>
+                        <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current">Contact</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+        <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <iframe style="border:0; width: 100%; height: 300px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.843420993133!2d31.20446108001476!3d30.041349654083874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458472e6975bdc7%3A0xc8e7067e081db02!2sEraaSoft!5e0!3m2!1sen!2seg!4v1716561844074!5m2!1sen!2seg" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div><!-- End Google Maps -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-4">
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                        <i class="bi bi-geo-alt flex-shrink-0"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p> 5 Mossadak Ad Doqi, 5 Mossadak, street, Dokki, Giza Governorate</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                        <i class="bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p> 01120477710</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                        <i class="bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>info@example.com</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                </div>
+
+                <div class="col-lg-8">
+               @*     <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">*@
+                    <form asp-action="add_contact">
+
+                        <div class="row gy-4">
+
+                            <div class="col-md-6">
+                                <input type="text" name="Name" class="form-control" placeholder="Your Name" required="">
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="Subject" placeholder="Subject" required="">
+                            </div>
+
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="Message" rows="6" placeholder="Message" required=""></textarea>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                               @* <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>*@
+
+                                <button style="background-color: #5fcf80; border: 0; padding: 10px 30px 12px 30px; transition: 0.4s; margin-top:15px;color:#ffffff;text-align: center; border-radius: 50px;" type="submit">Send Message!</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div><!-- End Contact Form -->
+
+            </div>
+
+        </div>
+
+    </section><!-- /Contact Section -->
+
+</main>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+@*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.843420993133!2d31.20446108001476!3d30.041349654083874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458472e6975bdc7%3A0xc8e7067e081db02!2sEraaSoft!5e0!3m2!1sen!2seg!4v1716561844074!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>*@

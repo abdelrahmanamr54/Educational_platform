@@ -3,6 +3,7 @@ using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.Repository;
 using Educational_platform.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing.Printing;
 
@@ -12,11 +13,14 @@ namespace Educational_platform.Controllers
     {
         private readonly IBookRepository bookRepository;
         private readonly ApplicationDbContext applicationDbContext;
-       public BookController(IBookRepository bookRepository, ApplicationDbContext applicationDbContext)
+        public BookController(IBookRepository bookRepository, ApplicationDbContext applicationDbContext)
         {
             this.bookRepository = bookRepository;
             this.applicationDbContext = applicationDbContext;
         }
+
+
+        [Authorize (Roles ="Admin")]
         public IActionResult Index()
         {
             var listOfBooks = bookRepository.ReadAll();
@@ -32,7 +36,7 @@ namespace Educational_platform.Controllers
 
 
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateNew()
         {
@@ -66,7 +70,7 @@ namespace Educational_platform.Controllers
             return View("CreateNew", bookVM);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             Book? book = bookRepository.ReadById(id);
@@ -101,7 +105,7 @@ namespace Educational_platform.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(int id)
         {

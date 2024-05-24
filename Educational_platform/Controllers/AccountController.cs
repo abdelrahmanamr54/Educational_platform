@@ -34,6 +34,7 @@ namespace Educational_platform.Controllers
         {
             var Grades = context.grades.ToList();
             ViewBag.Grades = Grades;
+
             if (ModelState.IsValid)
             {
                 Student user = new Student()
@@ -45,9 +46,10 @@ namespace Educational_platform.Controllers
                     Address=userVM.Address
                 };
 
-                // var result = await userManager.CreateAsync(user, userVM.Password);
+              
                 var result = await userManager.CreateAsync(user
                     , userVM.Password);
+                userManager.AddToRoleAsync(user, "User");
                 if (result.Succeeded)
                 {
                     await signIn.SignInAsync(user, false);

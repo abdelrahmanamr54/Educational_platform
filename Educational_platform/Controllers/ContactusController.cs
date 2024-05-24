@@ -2,7 +2,9 @@
 using Educational_platform.Models;
 using Educational_platform.Repository;
 using Educational_platform.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Educational_platform.Controllers
 {
@@ -19,7 +21,7 @@ namespace Educational_platform.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult addGrade(int id)
+        public IActionResult addcontact()
         {
 
             return View();
@@ -27,7 +29,7 @@ namespace Educational_platform.Controllers
 
         [HttpPost]
 
-        public IActionResult add_Grade(Contactus contactus)
+        public IActionResult add_contact(Contactus contactus)
         {
 
             context.contactus.Add(contactus);
@@ -37,6 +39,7 @@ namespace Educational_platform.Controllers
            
             return RedirectToAction("Index", "Home");
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult showAllContact()
         {
             var contact = context.contactus.ToList();

@@ -65,6 +65,7 @@ namespace Educational_platform.Data
             optionsBuilder.UseSqlServer(builder
                 );
         }
+        public DbSet<Educational_platform.ViewModel.UserRoleVM> UserRoleVM { get; set; } = default!;
       //  public DbSet<Educational_platform.ViewModel.BookVM> BookVM { get; set; } = default!;
       //  public DbSet<Educational_platform.ViewModel.LectureVM> LectureVM { get; set; } = default!;
 

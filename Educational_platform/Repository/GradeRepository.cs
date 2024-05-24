@@ -2,7 +2,9 @@
 using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Numerics;
 
 namespace Educational_platform.Repository
@@ -16,14 +18,14 @@ namespace Educational_platform.Repository
         }
 
 
-
+    
 
         public void Create(Grade grade)
         {
             context.grades.Add(grade);
             context.SaveChanges();
         }
-
+      
         public void Delete(Grade grade)
         {
             context.grades.Remove(grade);
@@ -72,7 +74,7 @@ namespace Educational_platform.Repository
             return oldgrade;
 
         }
-
+    
         public Grade Update(Grade grade)
         {
             var oldgrade = context.grades.Find(grade.Id);
