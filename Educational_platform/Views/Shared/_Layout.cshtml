@@ -71,9 +71,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">LogOut</a>
-                        </li>
+                        
                         <li class="nav-item">
                             @* <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Welcome,@User.Identity.Name</a> *@
                         <li class="dropdown">
@@ -91,6 +89,9 @@
                             </ul>
                         </li>
 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">LogOut</a>
                         </li>
 
 
@@ -168,7 +169,7 @@ transition: 0.4s; margin-left:12px;color:#5fcf80; text-align:center; border-radi
           <div class="footer-contact pt-3">
             <p>5 Mossadak Ad Doqi, 5 Mossadak, street</p>
                         <p> Dokki, Giza Governorate</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+201120477710- +201152159555 </span></p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+201120477710 / +201152159555 </span></p>
                       
             <p><strong>Email:</strong> <span>info@example.com</span></p>
           </div>
