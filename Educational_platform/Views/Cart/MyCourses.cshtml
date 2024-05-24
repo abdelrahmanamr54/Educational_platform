@@ -1,6 +1,70 @@
 ﻿@model List<Educational_platform.Models.CartItem>
 
+
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-KYd0BKFip0N3ZWgJfKcxKz4VqOen+LeThInO+RE4BwZZ/zByMmZX5DvduBddajVoz/SqLxhGS+mra2TcdWVrsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Lectures</h1>
+                        <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current">Lectures</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    <!-- Courses Section -->
+    <section id="courses" class="courses section">
+
+        <div class="container">
+
+            <div class="row">
+
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch my-2" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="course-item w-75">
+                            <a><img src="@Model[i].Lecture.ImageUrl" class="w-100" alt="..."></a>
+                            <div class="course-content">
+                             
+
+                                <h3><a>@Model[i].Lecture.Name</a></h3>
+                                <p class="description">@Model[i].Lecture.Description</p>
+                                <div class="trainer w-100">
+                                  @*   <div class="trainer-profile align-items-center">
+                                        <a href="/Cart/AddCart/@Model[i].Id" class="category">Book Lecture</a><br />
+                                        
+                                    </div> *@
+                                    <div class="d-flex justify-content-center trainer-rank align-items-center">
+                                        <a href="/Lecture/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+                                        <a href="/Lecture/Delete/@Model[i].Id" class="category m-2 "><i class="fa-regular fa-trash-can btn-del"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End Course Item-->
+                }
+
+</main>
+</html>
+@* <main class="main">
 
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
@@ -58,4 +122,4 @@
                         </div>
                     </div>
                 </div> <!-- End Course Item-->
-                }
+                } *@
