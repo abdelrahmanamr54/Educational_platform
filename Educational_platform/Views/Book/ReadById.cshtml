@@ -51,7 +51,7 @@
         <div class="d-flex flex-column justify-content-center text-center" style="height: 100vh; width:100%">
 
             <div class="image w-50 m-auto">
-            <img style="width:70%;height:auto" src="@Model.ImageUrl" class="" alt="...">
+            <img style="width:70%;height:500px" src="@Model.ImageUrl" class="" alt="...">
             </div>
             <div class="content w-50 m-auto">
                 <h2 class="category ">
@@ -59,7 +59,7 @@
                 </h2>
              
                 <h3 class=" category">
-                   @* @Model.Price EGP *@
+                    @Model.Price EGP 
                 </h3>
                
                 @* <dt class="col-sm-2">
@@ -71,10 +71,10 @@
                 <br />
                 <div class="row justify-content-evenly align-items-center m-auto" style="width: 60%">
                     <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download" style="width:40%; background-color: #5fcf80; border: 0; padding: 10px 5px;
-transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 45px;">Download <i class="fa-solid fa-download"></i></a>
+transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 40px;">Download <i class="fa-solid fa-download"></i></a>
                     <br /><br />
                     <a asp-action="Edit" asp-route-id="@Model?.Id" style="width:30%; background-color: #5fcf80; border: 0; padding: 10px 5px;
-transition: 0.4s; margin-top:12px;color:#ffffff; text-align: center; border-radius: 45px;"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+transition: 0.4s; margin-top:12px;color:#ffffff; text-align: center; border-radius: 40px;"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
                     <br />
                     <br />
                    

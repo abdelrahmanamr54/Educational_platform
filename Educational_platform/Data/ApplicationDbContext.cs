@@ -22,7 +22,7 @@ namespace Educational_platform.Data
         public DbSet<EnrollmentCodeBook> enrollmentCodeBooks { get; set; }
 
         public DbSet<Contactus> contactus { get; set; }
-       // public DbSet<StudentVM> studentVMs { get; set; } = default!;
+        public DbSet<StudentVM> studentVMs { get; set; } = default!;
 
 
         public ApplicationDbContext()

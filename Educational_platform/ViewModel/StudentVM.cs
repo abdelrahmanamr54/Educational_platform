@@ -16,6 +16,8 @@ namespace Educational_platform.ViewModel
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
         public int GradeId { get; set; }
+        
+
 
 
       // public Grade grade { get; set; }

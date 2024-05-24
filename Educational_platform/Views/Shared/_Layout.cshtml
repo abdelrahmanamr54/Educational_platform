@@ -59,22 +59,39 @@
         <h1 class="sitename">Mentor</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu">
+      <nav id="navmenu" class="navmenu ">
         <ul>
                     <li><a asp-area="" asp-controller="Home" asp-action="index" class="active">Home</a></li>
          @* <li><a href="about.html">About</a></li>*@
                     <li><a asp-controller="Grade" asp-action="getLecturebygrade">Lectures</a></li>
                     <li><a asp-controller="Grade" asp-action="getBookbyGrade">Books</a></li>
-     @*     <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>*@
+                    <li><a asp-controller="Contactus" asp-action="addcontact">Contact US</a></li>
+
+     
                     @if (User.Identity.IsAuthenticated)
                     {
 
+                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">LogOut</a>
+                            @* <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Welcome,@User.Identity.Name</a> *@
+                        <li class="dropdown">
+                            <a href="#"><span>Welcome,@User.Identity.Name</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyCourses">My Courses</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyBooks">MyBooks</a>
+                                </li>
+                                   
+
+
+                            </ul>
+                        </li>
+
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Welcome,@User.Identity.Name</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">LogOut</a>
                         </li>
 
 
@@ -82,14 +99,15 @@
                     else
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registration">Registration</a>
+                            <a style="width:105px; font-size:15px; background-color: #5fcf80; border: 0; padding:  10px 10px;
+transition: 0.4s; color:#ffffff; text-align: center; border-radius: 40px;" asp-area="" asp-controller="Account" asp-action="Registration">Registration</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            <a class="btn-outline" style="width:90px;font-size:15px;   border: 1px solid #5fcf80; padding: 10px 0px 10px 26px;
+transition: 0.4s; margin-left:12px;color:#5fcf80; text-align:center; border-radius: 40px;" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                         </li>
 
                     }
-@*          <li><a href="pricing.html">Pricing</a></li>*@
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item dropdown">
@@ -98,7 +116,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" asp-area="" asp-controller="Contactus" asp-action="showAllContact">Inbox <i class="fa-solid fa-envelope"></i> </a></li>
-                               
+
 
                               
                                 
@@ -126,39 +144,12 @@
                             </ul>
                         </li>
                     }
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyCourses">My Courses</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyBooks">MyBooks</a>
-                            </li>
-                           @* <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Login">Login</a>
-                            </li>*@
-                           
 
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
                 </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-                    <li><a asp-controller="Contactus" asp-action="addcontact">Contact US</a></li>
-        </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="courses.html">Get Started</a>
+     @*  <a class="btn-getstarted" href="courses.html">Get Started</a> *@
 
     </div>
   </header>
@@ -178,7 +169,7 @@
           <div class="footer-contact pt-3">
             <p>5 Mossadak Ad Doqi, 5 Mossadak, street</p>
                         <p> Dokki, Giza Governorate</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+201120477710- +201152159555 </span></p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+201120477710 / +201152159555 </span></p>
                       
             <p><strong>Email:</strong> <span>info@example.com</span></p>
           </div>

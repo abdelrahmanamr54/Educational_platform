@@ -36,7 +36,9 @@
                     @q?.exam?.Name
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@Model[i].Id">Edit</a> |
+                    <br />
+                        <a asp-action="Edit" asp-route-id="@Model[i].Id" style="width:100px; background-color: #5fcf80; border: 0; padding: 10px 10px;
+transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 45px;">Edit</a> |
                     <a href="/Question/ReadById/@Model[i].Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@Model[i].Id">Delete</a>
                 </td>
