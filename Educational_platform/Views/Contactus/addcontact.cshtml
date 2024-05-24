@@ -3,11 +3,49 @@
 @{
     ViewData["Title"] = "addcontact";
 }
+<html lang="en">
 
-<h1>addcontact</h1>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Courses - Mentor Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-KYd0BKFip0N3ZWgJfKcxKz4VqOen+LeThInO+RE4BwZZ/zByMmZX5DvduBddajVoz/SqLxhGS+mra2TcdWVrsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Mentor
+    * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+    * Updated: May 10 2024 with Bootstrap v5.3.3
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body class="courses-page">
+@*<h1>addcontact</h1>
 
 <h4>Contactus</h4>
-<hr />
+<hr />*@
 @*<div class="row">
     <div class="col-md-4">
         <form asp-action="add_contact">
@@ -80,11 +118,40 @@
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
             <div class="row gy-4">
+                    <div class="col-lg-4">
+                        <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+                            <i style="color:#ffff;margin-left:12px" class="fa-solid fa-location-dot"></i>
+                            <div>
+                              
+                                <h3>Address</h3>
+                          
+                                <p>5 Mossadak Ad Doqi, 5 Mossadak, street, Dokki, Giza Governorate</p>
+                            </div>
+                        </div><!-- End Info Item -->
 
-                <div class="col-lg-4">
+                        <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+                            <i style="color:#ffff;margin-left:12px" class="bi bi-telephone flex-shrink-0"></i>
+                            <div>
+                                <h3>Call Us</h3>
+                                <p>+201120477710 </p>
+                                <p>+201152159555 </p>
+                            </div>
+                        </div><!-- End Info Item -->
+
+                        <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
+                            <i style="color:#ffff;margin-left:12px" class="bi bi-envelope flex-shrink-0"></i>
+                            <div>
+                                <h3>Email Us</h3>
+                                <p>info@example.com</p>
+                            </div>
+                        </div><!-- End Info Item -->
+
+                    </div>
+
+              @*  <div class="col-lg-4">
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                        <i class="bi bi-geo-alt flex-shrink-0"></i>
-                        <div>
+                            <p> <i class="fa-solid fa-location-dot"></i></p>
+                            <div>
                             <h3>Address</h3>
                             <p> 5 Mossadak Ad Doqi, 5 Mossadak, street, Dokki, Giza Governorate</p>
                         </div>
@@ -106,7 +173,7 @@
                         </div>
                     </div><!-- End Info Item -->
 
-                </div>
+                </div>*@
 
                 <div class="col-lg-8">
                @*     <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">*@
@@ -149,6 +216,26 @@
     </section><!-- /Contact Section -->
 
 </main>
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+@*     <div id="preloader"></div> *@
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Main JS File -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
