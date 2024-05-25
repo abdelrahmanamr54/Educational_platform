@@ -49,8 +49,8 @@
     <main class="main">
 
         <!-- Page Title -->
-        <div class="page-title" data-aos="fade">
-            <div class="heading">
+        <div class="page-title">
+           @* <div class="heading">
                 <div class="container">
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <nav class="breadcrumbs">
                 <div class="container">
                     <ol>
@@ -91,12 +91,13 @@
 
                         <div class="course-info d-flex justify-content-between align-items-center">
                             <h5>Price</h5>
-                          @*  <p>@Model.Price</p>*@
+                           @* <p>@Model.Price</p>*@
+                           <p>120 EGP</p>
                         </div>
 
                         <div class="course-info d-flex justify-content-between align-items-center">
                             <h5>Duration</h5>
-                            <p>30</p>
+                            <p>120 min</p>
                         </div>
                         <form asp-action="Enroll" method="post" asp-controller="Cart">
                         <div class="course-info">

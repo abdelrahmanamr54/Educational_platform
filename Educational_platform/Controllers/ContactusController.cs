@@ -1,4 +1,5 @@
 ﻿using Educational_platform.Data;
+using Educational_platform.IRepositery;
 using Educational_platform.Models;
 using Educational_platform.Repository;
 using Educational_platform.ViewModel;
@@ -11,10 +12,10 @@ namespace Educational_platform.Controllers
     public class ContactusController : Controller
     {
 
-        private readonly ApplicationDbContext context;
-        public ContactusController(ApplicationDbContext context)
+        private readonly IContactusRepositery contactusRepositery;
+        public ContactusController(IContactusRepositery contactusRepositery)
         {
-            this.context = context;
+            this.contactusRepositery = contactusRepositery;
         }
         public IActionResult Index()
         {
@@ -32,8 +33,7 @@ namespace Educational_platform.Controllers
         public IActionResult add_contact(Contactus contactus)
         {
 
-            context.contactus.Add(contactus);
-            context.SaveChanges();
+            contactusRepositery.AddContact(contactus);
 
 
            
@@ -42,9 +42,26 @@ namespace Educational_platform.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult showAllContact()
         {
-            var contact = context.contactus.ToList();
+            var contact = contactusRepositery.getAllMsg();
 
             return View(contact);
+        }
+        [HttpGet]
+        public IActionResult Edit( int id)
+        {
+
+            var contact = contactusRepositery.findContact(id);
+            return View(contact);
+        }
+        [HttpPost]
+        public IActionResult SaveEdit(Contactus contactus)
+        {
+         
+           contactusRepositery.EditContact(contactus);
+
+       
+
+            return RedirectToAction("Index","Home");
         }
     }
 }

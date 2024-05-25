@@ -69,8 +69,10 @@
 
                                     </div> *@
                                         <div class="d-flex justify-content-center trainer-rank align-items-center">
-                                            <a href="/Book/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
-                                            <a href="/Book/Delete/@Model[i].Id" class="category m-2 "><i class="fa-regular fa-trash-can btn-del"></i></a>
+                                           @* <a href="/Book/Edit/@Model[i].Id" class="category"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+                                            <a href="/Book/Delete/@Model[i].Id" class="category m-2 "><i class="fa-regular fa-trash-can btn-del"></i></a>*@
+                                            <a href="/Book/ReadById/@Model[i].book.Id" style="background-color: #5fcf80; border: 0; padding: 6px 94px;
+                    transition: 0.4s; color:#ffffff;border-radius: 5px;">Let`s Study </a>
                                         </div>
                                     </div>
                                 </div>

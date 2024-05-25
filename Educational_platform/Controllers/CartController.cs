@@ -8,6 +8,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 
 namespace Educational_platform.Controllers
@@ -104,7 +105,7 @@ namespace Educational_platform.Controllers
                 if (string.IsNullOrEmpty(code))
                 {
                     ViewBag.Message = "Enrollment code cannot be empty!";
-                    return RedirectToAction("AddCart");
+                    return RedirectToAction("AddCart", new { id = courseId });
                 }
 
 
@@ -118,7 +119,7 @@ namespace Educational_platform.Controllers
                 if (user == null)
                 {
                  
-                    return RedirectToAction("Login", "Account");
+                 return RedirectToAction("AddCart", new { id = courseId });
                 }
                 var lec = await context.lectures.FindAsync(courseId);
                 string userlogedgradeId = user.Id;
@@ -130,6 +131,7 @@ namespace Educational_platform.Controllers
                     if (existingEnrollment != null)
                     {
                         ViewBag.Message = "You are already enrolled in this course!";
+                    return Unauthorized("You are already enrolled in this course!");
                     }
                     else
                     {
@@ -150,16 +152,17 @@ namespace Educational_platform.Controllers
                      context.enrollmentCodes.Remove(enrollmentCode);
                         context.SaveChanges();
 
-                        ViewBag.Message = "Enrolled successfully!";
+                      //  ViewBag.Message = "Enrolled successfully!";
                     }
                 }
                 else
                 {
                     ViewBag.Message = "Invalid enrollment code or course ID!";
-                }
+                return Unauthorized("Invalid enrollment code or course ID!");
+            }
 
             //return View("index","Lecture");
-            return RedirectToAction("index", "Lecture");
+            return RedirectToAction("index", "Home");
         }
         [HttpPost]
         public async Task<IActionResult> EnrollBook(int BookId, string code)
@@ -312,7 +315,7 @@ namespace Educational_platform.Controllers
             var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                // return Json(new { success = false, message = "Userr nott logged in." });
+           
                 return RedirectToAction("Login", "Account");
             }
             string userlogedgradeId = user.Id;
@@ -329,21 +332,3 @@ namespace Educational_platform.Controllers
 
 
 }
-// var lec= await cartRepository.AddToCart(lecId,userlogedgradeId);
-//if (lec)
-//{
-//    return RedirectToAction("Index", "Home");
-//}
-//   cartRepository.AddToCart(id, userlogedgradeId);
-//if (addedToCart)
-//{
-//    var response = JsonConvert.SerializeObject(new { message = "Product added to cart", productId = productId });
-//}
-// return Json(new { success = true, message = "Lecture added to cart!" });
-// var findItem = await context.lectures.FindAsync(lec.Id);
-//var cart = new CartItem()
-//{
-//    LectureId = findItem.Id,
-//    StudentId = userlogedgradeId,
-//    Lecture = findItem
-//};

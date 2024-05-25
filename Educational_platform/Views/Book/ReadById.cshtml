@@ -69,17 +69,38 @@
                  @Model.grade.Name
                 </h3>
                 <br />
-                <div class="row justify-content-evenly align-items-center m-auto" style="width: 60%">
-                    <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download" style="width:40%; background-color: #5fcf80; border: 0; padding: 10px 5px;
-transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 40px;">Download <i class="fa-solid fa-download"></i></a>
-                    <br /><br />
-                    <a asp-action="Edit" asp-route-id="@Model?.Id" style="width:30%; background-color: #5fcf80; border: 0; padding: 10px 5px;
-transition: 0.4s; margin-top:12px;color:#ffffff; text-align: center; border-radius: 40px;"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
-                    <br />
-                    <br />
-                   
 
-                </div>
+                @{
+                    if (User.IsInRole("Admin"))
+                    {
+                        <div class="row justify-content-evenly align-items-center m-auto" style="width: 60%">
+                            <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download" style="width:40%; background-color: #5fcf80; border: 0; padding: 10px 5px;
+    transition: 0.4s; margin-top:12px;color:#ffffff;text-align: center; border-radius: 40px;">Download <i class="fa-solid fa-download"></i></a>
+                            <br /><br />
+
+                            <a asp-action="Edit" asp-route-id="@Model?.Id" style="width:30%; background-color: #5fcf80; border: 0; padding: 10px 5px;
+    transition: 0.4s; margin-top:12px;color:#ffffff; text-align: center; border-radius: 40px;"><i class="fa-regular fa-pen-to-square btn-edit"></i></a>
+                            <br />
+                            <br />
+
+
+                        </div>
+                    }
+
+                    else
+                    {
+                        <div class="d-block">
+
+                            <a asp-controller="Cart" asp-route-id="@Model?.Id" asp-action="Download" style="background-color: #5fcf80; border: 0; padding: 6px 94px;
+                    transition: 0.4s; color:#ffffff;border-radius: 5px;">Book Lecture</a>
+
+
+                            <br />
+                            @* <a href="/Lecture/Edit/@Model[i].Id">Edit</a> *@
+                        </div>
+                    }
+                }
+                  
             </div>
         </div>
         <br />
