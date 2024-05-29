@@ -108,14 +108,14 @@ h6 {
   margin-right: 8px;
 }
 
-.header .logo h1 {
-  font-weight: 700;
-  font-size: 30px;
-  margin: 0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent-color);
-}
+    .header .logo h1 {
+        font-weight: 700;
+        font-size: 30px;
+        margin: 0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #5fcf80;
+    }
 
 .header .btn-getstarted,
 .header .btn-getstarted:focus {
