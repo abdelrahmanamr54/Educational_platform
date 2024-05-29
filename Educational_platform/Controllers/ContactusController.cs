@@ -61,7 +61,7 @@ namespace Educational_platform.Controllers
 
        
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("showAllContact", "Contactus");
         }
     }
 }
