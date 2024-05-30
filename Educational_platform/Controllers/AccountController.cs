@@ -49,10 +49,12 @@ namespace Educational_platform.Controllers
               
                 var result = await userManager.CreateAsync(user
                     , userVM.Password);
-            //    userManager.AddToRoleAsync(user, "User");
+                await userManager.AddToRoleAsync(user, "User");
+
                 if (result.Succeeded)
                 {
-                    await signIn.SignInAsync(user, false);
+                   
+                    await signIn.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
                 return View();
