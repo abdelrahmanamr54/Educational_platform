@@ -46,7 +46,7 @@ namespace Educational_platform.Controllers
                 Name = book.Name,
                 Price= book.Price,
                 ImageUrl = book.ImageUrl,
-
+      
             };
             return View(bookVM);
         }
