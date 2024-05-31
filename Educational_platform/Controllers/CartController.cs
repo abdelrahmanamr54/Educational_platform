@@ -52,7 +52,7 @@ namespace Educational_platform.Controllers
         }
 
         [HttpGet]
-
+        
         public IActionResult AddCart(int id)
         {
             Lecture? lec = context.lectures.Find(id);
@@ -97,7 +97,7 @@ namespace Educational_platform.Controllers
 
            
 
-            // GET: Enrollment/Index
+          
          
             [HttpPost]
             public async Task<IActionResult> Enroll(int courseId, string code)
@@ -157,8 +157,8 @@ namespace Educational_platform.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "Invalid enrollment code or course ID!";
-                return Unauthorized("Invalid enrollment code or course ID!");
+                    ViewBag.Message = "Invalid enrollment code!";
+                return Unauthorized("Invalid enrollment code!");
             }
 
             //return View("index","Lecture");
@@ -181,7 +181,7 @@ namespace Educational_platform.Controllers
                 .FirstOrDefault(e => e.Code == code);
             if(enrollmentCode == null)
             {
-                return NotFound("null");
+                return NotFound("Invalid enrollment code!");
             }
             else
             {
@@ -231,7 +231,7 @@ namespace Educational_platform.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "Invalid enrollment code or course ID!";
+                    ViewBag.Message = "Invalid enrollment code!";
                 }
             }
 
@@ -241,7 +241,7 @@ namespace Educational_platform.Controllers
             return RedirectToAction("MyBooks");
         }
 
-        // GET: Enrollment/AllCourses
+       
 
 
 

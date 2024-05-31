@@ -75,11 +75,11 @@
                                  @{
                                     if (User.IsInRole("Admin"))
                                     {
-                                        <a href="/Lecture/ReadById/@Model[i].Id"><img src="@Model[i].ImageUrl" class="w-100" alt="..."></a>
+                                        <a href="/Lecture/ReadById/@Model[i].Id"><img src="@Model[i].ImageUrl" height="200" class="w-100" alt="..."></a>
                                     }
                                     else
                                     {
-                                        <a href=""><img src="@Model[i].ImageUrl" class="w-100" alt="..."></a>
+                                        <a href=""><img src="@Model[i].ImageUrl" height="200" class="w-100" alt="..."></a>
                                     }
                                 }
                           @*  <a href="/Lecture/ReadById/@Model[i].Id"><img src="@Model[i].ImageUrl" class="w-100" alt="..."></a>*@
@@ -138,6 +138,14 @@
                         </div>
                     </div> <!-- End Course Item-->
                 }
+              
+                </div>
+               
+                
+                </div>
+           
+
+        </section>
 
 </main>
 </body>

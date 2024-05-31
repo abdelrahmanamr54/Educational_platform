@@ -58,9 +58,10 @@ namespace Educational_platform.Controllers
             {
                 Book book = new Book();
                 book.Name = bookVM.Name;
-                //book.Price = bookVM.Price;
+                book.Price = bookVM.Price;
                 book.GradeId = bookVM.GradeId;
                 book.ImageUrl = bookVM.ImageUrl;
+                book.FilePath = bookVM.FilePath;
 
                 bookRepository.Create(book);
 
@@ -84,9 +85,10 @@ namespace Educational_platform.Controllers
             {
                 Id = book.Id,
                 Name = book.Name,
-                //Price = book.Price,
+                Price = book.Price,
                 GradeId = book.GradeId,
                 ImageUrl = book.ImageUrl,
+                FilePath = book.FilePath,
         };
 
             return View(bookVM);
