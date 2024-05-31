@@ -64,16 +64,34 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="index" class="active">Home</a></li>
          @* <li><a href="about.html">About</a></li>*@
 
-                    <li><a asp-controller="Grade" asp-action="getLecturebygrade">Lectures</a></li>
-                    <li><a asp-controller="Grade" asp-action="getBookbyGrade">Books</a></li>
-                    <li><a asp-controller="Contactus" asp-action="addcontact">Contact US</a></li>
+                    @* <li><a asp-controller="Grade" asp-action="getLecturebygrade">Lectures</a></li>
+                    <li><a asp-controller="Grade" asp-action="getBookbyGrade">Books</a></li> *@
+
                       @if (User.IsInRole("User"))
                     {
-                        
+                        <li><a asp-controller="Grade" asp-action="getLecturebygrade">Lectures</a></li>
+                        <li><a asp-controller="Grade" asp-action="getBookbyGrade">Books</a></li>
+                        <li><a asp-controller="Contactus" asp-action="addcontact">Contact US</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Welcome,@User.Identity.Name</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyCourses">My Lectures</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyBooks">My Books</a>
+                                </li>
+
+
+
+                            </ul>
+                        </li>
                     }
 
                     @if (User.IsInRole("Admin"))
                     {
+                        <li><a asp-controller="Lecture" asp-action="Index">Lectures</a></li>
+                        <li><a asp-controller="Book" asp-action="Index">Books</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -87,14 +105,14 @@
                                 <li class="dropdown">
                                     <a href="#"><span>Lecture</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                                     <ul>
-                                        <li><a asp-controller="Lecture" asp-action="Index">Show All Lectures</a></li>
+                                        <li><a asp-controller="Lecture" asp-action="CreateNew">Create New Lecture</a></li>
 
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#"><span>Book</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                                     <ul>
-                                        <li><a asp-controller="Book" asp-action="index">Show All Books</a></li>
+                                        <li><a asp-controller="Book" asp-action="CreateNew">Create New Book</a></li>
 
                                     </ul>
                                 </li>
@@ -102,7 +120,11 @@
 
                             </ul>
                         </li>
-                    }
+
+                        <a href="#"><span>Welcome,@User.Identity.Name</span></a>
+                        
+
+                            }
 
      
                     @if (User.Identity.IsAuthenticated)
@@ -111,20 +133,20 @@
                         
                         <li class="nav-item">
                             @* <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Welcome,@User.Identity.Name</a> *@
-                        <li class="dropdown">
+                       @*  <li class="dropdown">
                             <a href="#"><span>Welcome,@User.Identity.Name</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyCourses">My Courses</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyCourses">My Lectures</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyBooks">MyBooks</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyBooks">My Books</a>
                                 </li>
                                    
 
 
                             </ul>
-                        </li>
+                        </li> *@
 
                         </li>
                         <li class="nav-item">
