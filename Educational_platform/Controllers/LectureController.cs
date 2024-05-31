@@ -28,6 +28,7 @@ namespace Educational_platform.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateNew()
         {
 
@@ -65,6 +66,7 @@ namespace Educational_platform.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult AddToCart(int lecId)
         {
 
